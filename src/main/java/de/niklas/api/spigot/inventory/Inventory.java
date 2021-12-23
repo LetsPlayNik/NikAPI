@@ -1,50 +1,34 @@
 package de.niklas.api.spigot.inventory;
 
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.ItemStack;
+
 public class Inventory {
 
-    private org.bukkit.inventory.Inventory inventory;
+    private final org.bukkit.inventory.Inventory inventory;
 
-    /*public Inventory(InventorySize inventorySize, String displayName) {
-        this.inventorySize = inventorySize;
-        this.inventory = Bukkit.createInventory(null, getInventorySize(), displayName);
+    public Inventory(int size, String displayName) {
+        inventory = Bukkit.createInventory(null, size, displayName);
     }
-    public Inventory(InventorySize inventorySize) {
-        this.inventorySize = inventorySize;
-        this.inventory = Bukkit.createInventory(null, getInventorySize());
+    public Inventory(int size) {
+        inventory = Bukkit.createInventory(null, size);
     }
     public Inventory(InventoryType inventoryType, String displayName) {
-        this.inventoryType = inventoryType;
-        this.inventory = Bukkit.createInventory(null, getMinecraftInventoryType(), displayName);
+        inventory = Bukkit.createInventory(null, inventoryType, displayName);
     }
     public Inventory(InventoryType inventoryType) {
-        this.inventoryType = inventoryType;
-        this.inventory = Bukkit.createInventory(null, getMinecraftInventoryType());
+        inventory = Bukkit.createInventory(null, inventoryType);
     }
 
-    public int getInventorySize() {
-        switch(inventorySize) {
-            case oneXnine:
-                return 9;
-            case twoXnine:
-                return 18;
-            case threeXnine:
-                return 27;
-            case fourXnine:
-                return 36;
-            case fiveXnine:
-                return 45;
-            case sixXnine:
-                return 54;
-            case sevenXnine:
-                return 63;
-        }
-        return 9;
+    public void open(Player player) {
+        inventory.setItem(1, new ItemStack(Material.ACACIA_DOOR));
+        player.openInventory(inventory);
     }
-    public org.bukkit.event.inventory.InventoryType getMinecraftInventoryType() {
-        switch(inventoryType) {
-            case CHEST:
-                return org.bukkit.event.inventory.InventoryType.CHEST;
-        }
-        return org.bukkit.event.inventory.InventoryType.CHEST;
-    }*/
+
+    public org.bukkit.inventory.Inventory getBukkitInventory() {
+        return inventory;
+    }
 }
