@@ -1,12 +1,8 @@
 package de.niklas.api.spigot.inventory;
 
-import org.bukkit.Bukkit;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-
 public class InventoryMenu {
 
-    private InventoryType inventoryType;
+    /*private InventoryType inventoryType;
     private InventorySize inventorySize;
     private org.bukkit.inventory.Inventory inventory;
 
@@ -45,5 +41,5 @@ public class InventoryMenu {
                 return 63;
         }
         return 9;
-    }
+    }*/
 }

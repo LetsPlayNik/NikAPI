@@ -1,14 +1,10 @@
 package de.niklas.api.spigot.inventory;
 
-import org.bukkit.Bukkit;
-
 public class Inventory {
 
-    private InventoryType inventoryType;
-    private InventorySize inventorySize;
     private org.bukkit.inventory.Inventory inventory;
 
-    public Inventory(InventorySize inventorySize, String displayName) {
+    /*public Inventory(InventorySize inventorySize, String displayName) {
         this.inventorySize = inventorySize;
         this.inventory = Bukkit.createInventory(null, getInventorySize(), displayName);
     }
@@ -50,5 +46,5 @@ public class Inventory {
                 return org.bukkit.event.inventory.InventoryType.CHEST;
         }
         return org.bukkit.event.inventory.InventoryType.CHEST;
-    }
+    }*/
 }
