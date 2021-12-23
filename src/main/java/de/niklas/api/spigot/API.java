@@ -3,12 +3,10 @@ package de.niklas.api.spigot;
 import de.niklas.api.spigot.inventory.InventoryManager;
 import de.niklas.api.spigot.inventory.InventoryMenu;
 import de.niklas.api.spigot.listeners.InventoryClickListener;
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -37,14 +35,13 @@ public class API extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
     }
 
-    /*public HashMap<Inventory, InventoryMenu> getInventoryGuis() {
-        return inventoryGui;
-    }*/
-
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
+            menu.setItem(2, new ItemStack(Material.ARROW), player -> {
+
+            });
             menu.setItem(1, new ItemStack(Material.ARROW));
             menu.open((Player) sender);
             return true;

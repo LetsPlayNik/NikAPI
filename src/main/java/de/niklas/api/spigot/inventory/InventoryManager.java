@@ -6,6 +6,7 @@ package de.niklas.api.spigot.inventory;
  * Created at 23.12.2021 - 15:26Uhr
  */
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 
 import java.util.HashMap;
@@ -15,15 +16,20 @@ public class InventoryManager {
 
     private static InventoryManager instance;
 
-    private final Map<Inventory, InventoryMenu> inventoryMenus;
+    //private final Map<Inventory, InventoryMenu> inventoryMenus;
+    private final Map<Player, InventoryMenu> openedMenus;
 
     public InventoryManager() {
         instance = this;
-        inventoryMenus = new HashMap<>();
+        //inventoryMenus = new HashMap<>();
+        openedMenus = new HashMap<>();
     }
 
-    public Map<Inventory, InventoryMenu> getInventoryMenus() {
+    /*public Map<Inventory, InventoryMenu> getInventoryMenus() {
         return inventoryMenus;
+    }*/
+    public Map<Player, InventoryMenu> getOpenedMenus() {
+        return openedMenus;
     }
 
     public static InventoryManager getInstance() {
