@@ -13,13 +13,20 @@ import java.util.Map;
 
 public class InventoryManager {
 
+    private static InventoryManager instance;
+
     private final Map<Inventory, InventoryMenu> inventoryMenus;
 
     public InventoryManager() {
+        instance = this;
         inventoryMenus = new HashMap<>();
     }
 
     public Map<Inventory, InventoryMenu> getInventoryMenus() {
         return inventoryMenus;
+    }
+
+    public static InventoryManager getInstance() {
+        return instance;
     }
 }
