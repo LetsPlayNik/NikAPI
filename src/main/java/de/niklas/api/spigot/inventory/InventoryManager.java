@@ -16,7 +16,6 @@ public class InventoryManager {
 
     private static InventoryManager instance;
 
-    //private final Map<Inventory, InventoryMenu> inventoryMenus;
     private final Map<Player, InventoryMenu> openedMenus;
 
     public InventoryManager() {
@@ -25,9 +24,6 @@ public class InventoryManager {
         openedMenus = new HashMap<>();
     }
 
-    /*public Map<Inventory, InventoryMenu> getInventoryMenus() {
-        return inventoryMenus;
-    }*/
     public Map<Player, InventoryMenu> getOpenedMenus() {
         return openedMenus;
     }

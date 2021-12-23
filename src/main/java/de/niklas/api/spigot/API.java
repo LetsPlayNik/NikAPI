@@ -3,6 +3,7 @@ package de.niklas.api.spigot;
 import de.niklas.api.spigot.inventory.InventoryManager;
 import de.niklas.api.spigot.inventory.InventoryMenu;
 import de.niklas.api.spigot.listeners.InventoryClickListener;
+import de.niklas.api.spigot.listeners.InventoryCloseListener;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -33,6 +34,7 @@ public class API extends JavaPlugin {
 
     public void initListeners() {
         getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
     }
 
     @Override
