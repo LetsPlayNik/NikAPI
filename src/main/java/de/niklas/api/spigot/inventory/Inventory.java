@@ -1,7 +1,6 @@
 package de.niklas.api.spigot.inventory;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
@@ -23,8 +22,10 @@ public class Inventory {
         inventory = Bukkit.createInventory(null, inventoryType);
     }
 
+    public void setItem(int index, ItemStack itemStack) {
+        inventory.setItem(index, itemStack);
+    }
     public void open(Player player) {
-        inventory.setItem(1, new ItemStack(Material.ACACIA_DOOR));
         player.openInventory(inventory);
     }
 
