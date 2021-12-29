@@ -6,3 +6,6 @@ commands:
   test:
     description: "Test"
     usage: "/test"
+  paginated:
+    description: "Test Paginated Menu"
+    usage: "/paginated"

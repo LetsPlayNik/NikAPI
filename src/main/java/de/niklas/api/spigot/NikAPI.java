@@ -2,6 +2,7 @@ package de.niklas.api.spigot;
 
 import de.niklas.api.spigot.inventory.InventoryManager;
 import de.niklas.api.spigot.inventory.InventoryMenu;
+import de.niklas.api.spigot.inventory.PaginatedInventoryMenu;
 import de.niklas.api.spigot.listeners.InventoryClickListener;
 import de.niklas.api.spigot.listeners.InventoryCloseListener;
 import org.bukkit.Material;
@@ -57,6 +58,14 @@ public class NikAPI extends JavaPlugin {
             menu.setSubMenuItem(4, new ItemStack(Material.ANVIL), subMenu);
             menu.open((Player) sender);
             return true;
+        } else if(command.getName().equals("paginated")) {
+            PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory");
+            menu.setItem(1, new ItemStack(Material.ARROW), player -> {
+                player.sendMessage("Hallo :D");
+            });
+            menu.setBackwardsItem(0, new ItemStack(Material.ARROW));
+            menu.setForwardItem(8, new ItemStack(Material.ARROW));
+            menu.open((Player) sender);
         }
         return false;
     }
