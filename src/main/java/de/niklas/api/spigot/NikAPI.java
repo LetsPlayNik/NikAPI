@@ -40,6 +40,7 @@ public class NikAPI extends JavaPlugin {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
+            //System.out.println(getServer().getClass().getPackage().getName().split("\\.")[3]);
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
                 player.sendMessage("Hallo :D");

@@ -2,5 +2,6 @@ de\niklas\api\spigot\exceptions\inventory\InvalidInventorySizeException.class
 de\niklas\api\spigot\inventory\InventoryManager.class
 de\niklas\api\spigot\listeners\InventoryCloseListener.class
 de\niklas\api\spigot\inventory\InventoryMenu.class
+de\niklas\api\spigot\inventory\PaginatedInventoryMenu.class
 de\niklas\api\spigot\listeners\InventoryClickListener.class
 de\niklas\api\spigot\NikAPI.class
