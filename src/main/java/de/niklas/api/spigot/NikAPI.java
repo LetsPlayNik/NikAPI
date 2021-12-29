@@ -65,6 +65,9 @@ public class NikAPI extends JavaPlugin {
             });
             menu.setBackwardsItem(0, new ItemStack(Material.ARROW));
             menu.setForwardItem(8, new ItemStack(Material.ARROW));
+            InventoryMenu test = new InventoryMenu(9, "Paginated Inventory 2");
+            test.setItem(4, new ItemStack(Material.DIAMOND));
+            menu.addPage(test);
             menu.open((Player) sender);
         }
         return false;

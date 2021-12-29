@@ -20,6 +20,7 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     public PaginatedInventoryMenu(int size, String displayName) {
         super(size, displayName);
         pages = new HashMap<>();
+        System.out.println("Größe: " + pages.size());
     }
     public PaginatedInventoryMenu(int size) {
         super(size);
@@ -43,6 +44,11 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                 System.out.println("Seite zurück.");
             }
         });
+    }
+    public void addPage(PaginatedInventoryMenu paginatedInventoryMenu) {
+        //TODO mal schauen was ich daraus mache...
+        pageCount++;
+        pages.put(pageCount, paginatedInventoryMenu);
     }
     public void addPage(InventoryMenu inventoryMenu) {
         pageCount++;
