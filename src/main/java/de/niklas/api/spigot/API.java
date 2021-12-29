@@ -41,10 +41,9 @@ public class API extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
-            menu.setItem(2, new ItemStack(Material.ARROW), player -> {
+            menu.setItem(1, new ItemStack(Material.ARROW), player -> {
 
             });
-            menu.setItem(1, new ItemStack(Material.ARROW));
             menu.open((Player) sender);
             return true;
         }
