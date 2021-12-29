@@ -7,7 +7,6 @@ package de.niklas.api.spigot.inventory;
  */
 
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +19,6 @@ public class InventoryManager {
 
     public InventoryManager() {
         instance = this;
-        //inventoryMenus = new HashMap<>();
         openedMenus = new HashMap<>();
     }
 

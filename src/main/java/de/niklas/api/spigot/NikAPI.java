@@ -13,7 +13,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
 
-public class API extends JavaPlugin {
+public class NikAPI extends JavaPlugin {
 
     private InventoryManager inventoryManager;
 
@@ -33,7 +33,7 @@ public class API extends JavaPlugin {
     }
 
     public void initListeners() {
-        getServer().getPluginManager().registerEvents(new InventoryClickListener(this), this);
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
     }
 
@@ -42,8 +42,18 @@ public class API extends JavaPlugin {
         if(command.getName().equals("test")) {
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
-
+                player.sendMessage("Hallo :D");
             });
+            menu.setItem(2, new ItemStack(Material.DIRT), player -> {
+                player.sendMessage("Tschau :D");
+            });
+            menu.setItem(3, new ItemStack(Material.DIAMOND));
+            InventoryMenu subMenu = new InventoryMenu(9, "Nice GUI");
+            subMenu.setItem(1, new ItemStack(Material.DIAMOND), player -> {
+                player.sendMessage("Sub Menu works");
+            });
+            subMenu.setFillItem(new ItemStack(Material.WHEAT));
+            menu.setSubMenuItem(4, new ItemStack(Material.ANVIL), subMenu);
             menu.open((Player) sender);
             return true;
         }
