@@ -1,10 +1,10 @@
-package de.niklas.api.spigot;
+package de.niklas.nikapi.spigot;
 
-import de.niklas.api.spigot.inventory.InventoryManager;
-import de.niklas.api.spigot.inventory.InventoryMenu;
-import de.niklas.api.spigot.inventory.PaginatedInventoryMenu;
-import de.niklas.api.spigot.listeners.InventoryClickListener;
-import de.niklas.api.spigot.listeners.InventoryCloseListener;
+import de.niklas.nikapi.spigot.inventory.InventoryManager;
+import de.niklas.nikapi.spigot.inventory.InventoryMenu;
+import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
+import de.niklas.nikapi.spigot.listeners.InventoryClickListener;
+import de.niklas.nikapi.spigot.listeners.InventoryCloseListener;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;

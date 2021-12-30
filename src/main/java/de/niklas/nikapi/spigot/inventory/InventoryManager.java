@@ -1,4 +1,4 @@
-package de.niklas.api.spigot.inventory;
+package de.niklas.nikapi.spigot.inventory;
 
 /*
  * Project Plugin-API

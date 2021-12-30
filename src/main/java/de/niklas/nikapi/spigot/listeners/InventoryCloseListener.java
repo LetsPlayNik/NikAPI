@@ -1,4 +1,4 @@
-package de.niklas.api.spigot.listeners;
+package de.niklas.nikapi.spigot.listeners;
 
 /*
  * Project Plugin-API
@@ -6,7 +6,7 @@ package de.niklas.api.spigot.listeners;
  * Created at 23.12.2021 - 16:21Uhr
  */
 
-import de.niklas.api.spigot.inventory.InventoryManager;
+import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,4 +1,4 @@
-package de.niklas.api.spigot.exceptions.inventory;
+package de.niklas.nikapi.spigot.exceptions.inventory;
 
 public class InvalidInventorySizeException extends Exception {
 

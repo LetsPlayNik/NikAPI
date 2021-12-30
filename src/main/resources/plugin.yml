@@ -1,7 +1,7 @@
 name: Spigot-API
 author: Niklas
 version: 1.0.0
-main: de.niklas.api.spigot.NikAPI
+main: de.niklas.nikapi.spigot.NikAPI
 commands:
   test:
     description: "Test"

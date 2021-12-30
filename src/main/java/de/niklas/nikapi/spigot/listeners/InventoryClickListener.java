@@ -1,7 +1,7 @@
-package de.niklas.api.spigot.listeners;
+package de.niklas.nikapi.spigot.listeners;
 
-import de.niklas.api.spigot.inventory.InventoryManager;
-import de.niklas.api.spigot.inventory.InventoryMenu;
+import de.niklas.nikapi.spigot.inventory.InventoryManager;
+import de.niklas.nikapi.spigot.inventory.InventoryMenu;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
