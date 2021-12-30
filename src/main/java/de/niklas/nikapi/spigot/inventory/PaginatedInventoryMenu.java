@@ -35,7 +35,7 @@ public class PaginatedInventoryMenu extends InventoryMenu {
         forwardItemIndex = index;
         forwardItem = itemStack;
         setItem(index, itemStack, player -> {
-            if(currentPage < pageCount) {
+            if(currentPage < pages.size()) {
                 currentPage++;
                 pages.get(currentPage).open(player);
             }
@@ -58,7 +58,7 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                 InventoryMenu inventoryMenu = pages.get(key);
                 if(key != pages.size()) {
                     inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
-                        if(currentPage < pageCount) {
+                        if(currentPage < pages.size()) {
                             currentPage++;
                             pages.get(currentPage).open(p);
                         }
