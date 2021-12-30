@@ -47,8 +47,41 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     public void addPage(InventoryMenu inventoryMenu) {
         pages.put(pages.size() + 2, inventoryMenu);
     }
+    /*@Override
+    public void addItemStacks(List<ItemStack> items) {
+        int site = 1;
+        items.forEach(item -> {
+            boolean needSite = true;
+            for(int i = 0; i < getBukkitInventory().getSize(); i++) {
+                if(i != forwardItemIndex && i != backwardsItemIndex) {
+                    if(getBukkitInventory().getItem(i) == null) {
+                        setItem(i, item);
+                        needSite = false;
+                        break;
+                    }
+                }
+            }
+        });
+    }
+    @Override
+    public void addItemStacks(Map<ItemStack, Consumer<Player>> items) {
+        int site = 1;
+        for(ItemStack key : items.keySet()) {
+            boolean needSite = true;
+            for(int i = 0; i < getBukkitInventory().getSize(); i++) {
+                if(i != forwardItemIndex && i != backwardsItemIndex) {
+                    if(getBukkitInventory().getItem(i) == null) {
+                        setItem(i, key, items.get(key));
+                        needSite = false;
+                        break;
+                    }
+                }
+            }
+        }
+    }*/
 
     @Override
+    @Deprecated
     public void open(Player player) {
         pages.put(1, getInventoryMenu());
         if(forwardItem != null || backwardsItem != null) {

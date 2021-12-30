@@ -12,6 +12,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.logging.Level;
 
 public class NikAPI extends JavaPlugin {
@@ -74,7 +76,41 @@ public class NikAPI extends JavaPlugin {
             InventoryMenu test3 = new InventoryMenu(9, "Paginated Inventory 4");
             test3.setItem(4, new ItemStack(Material.GOLD_INGOT));
             menu.addPage(test3);
+
+            InventoryMenu test4 = new InventoryMenu(9, "Paginated Inventory 5");
+            List<ItemStack> items = new LinkedList<>();
+            items.add(new ItemStack(Material.DIAMOND));
+            items.add(new ItemStack(Material.EMERALD));
+            items.add(new ItemStack(Material.IRON_INGOT));
+            items.add(new ItemStack(Material.GOLD_INGOT));
+            items.add(new ItemStack(Material.COAL));
+            items.add(new ItemStack(Material.LAPIS_ORE));
+            items.add(new ItemStack(Material.LEATHER));
+            items.add(new ItemStack(Material.DIRT));
+            items.add(new ItemStack(Material.WHEAT));
+            //test4.addItemStacks(items);
+            menu.addPage(test4);
+
+            InventoryMenu test5 = new InventoryMenu(9, "Paginated Inventory 6");
+            test5.setItem(4, new ItemStack(Material.LAVA_BUCKET));
+            menu.addPage(test5);
             menu.open((Player) sender);
+        } else if(command.getName().equalsIgnoreCase("lol")) {
+            InventoryMenu menu = new InventoryMenu(9, "Paginated Inventory");
+            List<ItemStack> items = new LinkedList<>();
+            items.add(new ItemStack(Material.DIAMOND));
+            items.add(new ItemStack(Material.EMERALD));
+            items.add(new ItemStack(Material.IRON_INGOT));
+            items.add(new ItemStack(Material.GOLD_INGOT));
+            items.add(new ItemStack(Material.COAL));
+            items.add(new ItemStack(Material.LAPIS_ORE));
+            items.add(new ItemStack(Material.LEATHER));
+            items.add(new ItemStack(Material.DIRT));
+            items.add(new ItemStack(Material.WHEAT));
+            menu.setItem(0, new ItemStack(Material.LAVA_BUCKET));
+            //menu.addItemStacks(items);
+            menu.open((Player) sender);
+            return true;
         }
         return false;
     }

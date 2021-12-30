@@ -9,3 +9,6 @@ commands:
   paginated:
     description: "Test Paginated Menu"
     usage: "/paginated"
+  lol:
+    description: "test"
+    usage: "/lol"
