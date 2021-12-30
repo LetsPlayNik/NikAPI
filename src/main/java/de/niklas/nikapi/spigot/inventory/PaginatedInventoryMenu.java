@@ -37,6 +37,13 @@ public class PaginatedInventoryMenu extends InventoryMenu {
             if(currentPage < pages.size()) {
                 currentPage++;
                 pages.get(currentPage).open(player);
+                //Test
+                /*Map<Integer, ItemStack> items = pages.get(currentPage).getItems();
+                clearInventory();
+                for(Integer key : items.keySet()) {
+                    setItem(key, items.get(key));
+                }*/
+                //Test END
             }
         });
     }
