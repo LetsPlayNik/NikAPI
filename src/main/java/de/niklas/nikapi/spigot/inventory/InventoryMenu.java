@@ -6,7 +6,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
@@ -51,26 +50,6 @@ public class InventoryMenu {
             }
         }
     }
-    /*public void addItemStacks(List<ItemStack> items) {
-        items.forEach(item -> {
-            for(int i = 0; i < getBukkitInventory().getSize(); i++) {
-                if(getBukkitInventory().getItem(i) == null) {
-                    setItem(i, item);
-                    break;
-                }
-            }
-        });
-    }
-    public void addItemStacks(Map<ItemStack, Consumer<Player>> items) {
-        for(ItemStack key : items.keySet()) {
-            for(int i = 0; i < getBukkitInventory().getSize(); i++) {
-                if(getBukkitInventory().getItem(i) == null) {
-                    setItem(i, key, items.get(key));
-                    break;
-                }
-            }
-        }
-    }*/
     public void click(Player player, int slot) {
         if(actions.containsKey(slot)) {
             actions.get(slot).accept(player);
