@@ -61,12 +61,10 @@ public class NikAPI extends JavaPlugin {
             menu.open((Player) sender);
             return true;
         } else if(command.getName().equals("paginated")) {
-            PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory");
+            PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
                 player.sendMessage("Hallo :D");
             });
-            menu.setBackwardsItem(0, new ItemStack(Material.ARROW));
-            menu.setForwardItem(8, new ItemStack(Material.ARROW));
             InventoryMenu test = new InventoryMenu(9, "Paginated Inventory 2");
             test.setItem(4, new ItemStack(Material.DIAMOND));
             menu.addPage(test);

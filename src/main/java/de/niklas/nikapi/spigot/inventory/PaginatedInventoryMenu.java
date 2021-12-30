@@ -14,39 +14,80 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
-    private int forwardItemIndex;
-    private ItemStack forwardItem;
-    private int backwardsItemIndex;
-    private ItemStack backwardsItem;
     private final Map<Integer, InventoryMenu> pages;
     private int currentPage = 1;
+    private final int backwardsItemIndex;
+    private final ItemStack backwardsItem;
+    private final int forwardItemIndex;
+    private final ItemStack forwardItem;
 
-    public PaginatedInventoryMenu(int size, String displayName) {
+    public PaginatedInventoryMenu(int size, String displayName, int backwardsItemIndex, ItemStack backwardsItem, int forwardItemIndex, ItemStack forwardItem) {
         super(size, displayName);
         pages = new ConcurrentHashMap<>();
+        this.backwardsItemIndex = backwardsItemIndex;
+        this.backwardsItem = backwardsItem;
+        this.forwardItemIndex = forwardItemIndex;
+        this.forwardItem = forwardItem;
     }
-    public PaginatedInventoryMenu(int size) {
+    public PaginatedInventoryMenu(int size, int backwardsItemIndex, ItemStack backwardsItem, int forwardItemIndex, ItemStack forwardItem) {
         super(size);
         pages = new ConcurrentHashMap<>();
+        this.backwardsItemIndex = backwardsItemIndex;
+        this.backwardsItem = backwardsItem;
+        this.forwardItemIndex = forwardItemIndex;
+        this.forwardItem = forwardItem;
     }
 
-    public void setForwardItem(int index, ItemStack itemStack) {
-        forwardItemIndex = index;
-        forwardItem = itemStack;
-        setItem(index, itemStack, player -> {
-            if(currentPage < pages.size()) {
-                currentPage++;
-                pages.get(currentPage).open(player);
-            }
-        });
-    }
-    public void setBackwardsItem(int index, ItemStack itemStack) {
-        backwardsItemIndex = index;
-        backwardsItem = itemStack;
-    }
+    /*public void addItem(ItemStack itemStack) {}
+    public void addItem(ItemStack itemStack, Consumer<Player> consumer) {}*/
     public void addPage(InventoryMenu inventoryMenu) {
         pages.put(pages.size() + 2, inventoryMenu);
     }
+
+    @Override
+    public void open(Player player) {
+        pages.put(1, getInventoryMenu());
+        if(pages.size() > 1) {
+            setItem(forwardItemIndex, forwardItem, p -> {
+                if(currentPage < pages.size()) {
+                    currentPage++;
+                    pages.get(currentPage).open(p);
+                }
+            });
+        }
+        for(Integer key : pages.keySet()) {
+            if(key != 1) {
+                InventoryMenu inventoryMenu = pages.get(key);
+                if(key != pages.size()) {
+                    inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                        if(currentPage < pages.size()) {
+                            currentPage++;
+                            pages.get(currentPage).open(p);
+                        }
+                    });
+                }
+                inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
+                    if(currentPage > 1) {
+                        currentPage--;
+                        pages.get(currentPage).open(p);
+                    }
+                });
+                pages.remove(key);
+                pages.put(key, inventoryMenu);
+            }
+        }
+        super.open(player);
+    }
+
+
+
+
+
+
+
+
+
+
     /*@Override
     public void addItemStacks(List<ItemStack> items) {
         int site = 1;
@@ -79,36 +120,4 @@ public class PaginatedInventoryMenu extends InventoryMenu {
             }
         }
     }*/
-
-    @Override
-    @Deprecated
-    public void open(Player player) {
-        pages.put(1, getInventoryMenu());
-        if(forwardItem != null || backwardsItem != null) {
-            for(Integer key : pages.keySet()) {
-                if(key != 1) {
-                    InventoryMenu inventoryMenu = pages.get(key);
-                    if(forwardItem != null && key != pages.size()) {
-                        inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
-                            if(currentPage < pages.size()) {
-                                currentPage++;
-                                pages.get(currentPage).open(p);
-                            }
-                        });
-                    }
-                    if(backwardsItem != null) {
-                        inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
-                            if(currentPage > 1) {
-                                currentPage--;
-                                pages.get(currentPage).open(p);
-                            }
-                        });
-                    }
-                    pages.remove(key);
-                    pages.put(key, inventoryMenu);
-                }
-            }
-        }
-        super.open(player);
-    }
 }
