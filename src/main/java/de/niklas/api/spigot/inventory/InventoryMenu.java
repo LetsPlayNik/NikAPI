@@ -52,4 +52,8 @@ public class InventoryMenu {
             actions.get(slot).accept(player);
         }
     }
+
+    public InventoryMenu getInventoryMenu() {
+        return this;
+    }
 }

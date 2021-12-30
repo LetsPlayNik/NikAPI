@@ -6,6 +6,7 @@ package de.niklas.api.spigot.inventory;
  * Created at 29.12.2021 - 20:10Uhr
  */
 
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
@@ -14,13 +15,16 @@ import java.util.Map;
 public class PaginatedInventoryMenu extends InventoryMenu {
 
     private int pageCount = 1;
+    private int forwardItemIndex;
+    private ItemStack forwardItem;
+    private int backwardsItemIndex;
+    private ItemStack backwardsItem;
     private final Map<Integer, InventoryMenu> pages;
     private int currentPage = 1;
 
     public PaginatedInventoryMenu(int size, String displayName) {
         super(size, displayName);
         pages = new HashMap<>();
-        System.out.println("Größe: " + pages.size());
     }
     public PaginatedInventoryMenu(int size) {
         super(size);
@@ -28,30 +32,52 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     }
 
     public void setForwardItem(int index, ItemStack itemStack) {
+        forwardItemIndex = index;
+        forwardItem = itemStack;
         setItem(index, itemStack, player -> {
             if(currentPage < pageCount) {
                 currentPage++;
                 pages.get(currentPage).open(player);
-                System.out.println("Seite vorwärts.");
             }
         });
     }
     public void setBackwardsItem(int index, ItemStack itemStack) {
-        setItem(index, itemStack, player -> {
+        backwardsItemIndex = index;
+        backwardsItem = itemStack;
+        /*setItem(index, itemStack, player -> {
             if(currentPage > 1) {
                 currentPage--;
                 pages.get(currentPage).open(player);
-                System.out.println("Seite zurück.");
             }
-        });
-    }
-    public void addPage(PaginatedInventoryMenu paginatedInventoryMenu) {
-        //TODO mal schauen was ich daraus mache...
-        pageCount++;
-        pages.put(pageCount, paginatedInventoryMenu);
+        });*/
     }
     public void addPage(InventoryMenu inventoryMenu) {
         pageCount++;
         pages.put(pageCount, inventoryMenu);
+    }
+
+    @Override
+    public void open(Player player) {
+        pages.put(1, getInventoryMenu());
+        for(Integer key : pages.keySet()) {
+            if(key != 1) {
+                InventoryMenu inventoryMenu = pages.get(key);
+                inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                    if(currentPage < pageCount) {
+                        currentPage++;
+                        pages.get(currentPage).open(p);
+                    }
+                });
+                inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
+                    if(currentPage > 1) {
+                        currentPage--;
+                        pages.get(currentPage).open(p);
+                    }
+                });
+                pages.remove(key);
+                pages.put(key, inventoryMenu);
+            }
+        }
+        super.open(player);
     }
 }
