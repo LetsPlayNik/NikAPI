@@ -10,6 +10,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.LinkedList;
@@ -18,16 +19,13 @@ import java.util.logging.Level;
 
 public class NikAPI extends JavaPlugin {
 
-    private InventoryManager inventoryManager;
-
     @Override
     public void onLoad() {
         getServer().getLogger().log(Level.INFO, "Plugin-API wird geladen...");
     }
     @Override
     public void onEnable() {
-        initListeners();
-        inventoryManager = new InventoryManager();
+        init(this);
         getServer().getLogger().log(Level.INFO, "Plugin-API wurde aktiviert.");
     }
     @Override
@@ -35,9 +33,13 @@ public class NikAPI extends JavaPlugin {
         getServer().getLogger().log(Level.INFO, "Plugin-API wurde deaktiviert.");
     }
 
-    public void initListeners() {
-        getServer().getPluginManager().registerEvents(new InventoryClickListener(), this);
-        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), this);
+    public void init(Plugin plugin) {
+        new InventoryManager();
+        initListeners(plugin);
+    }
+    public void initListeners(Plugin plugin) {
+        getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
+        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
     }
 
     @Override
@@ -111,9 +113,5 @@ public class NikAPI extends JavaPlugin {
             return true;
         }
         return false;
-    }
-
-    public InventoryManager getInventoryManager() {
-        return inventoryManager;
     }
 }
