@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
-    //private int pageCount = 1;
     private int forwardItemIndex;
     private ItemStack forwardItem;
     private int backwardsItemIndex;
@@ -52,25 +51,29 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     @Override
     public void open(Player player) {
         pages.put(1, getInventoryMenu());
-        for(Integer key : pages.keySet()) {
-            if(key != 1) {
-                InventoryMenu inventoryMenu = pages.get(key);
-                if(key != pages.size()) {
-                    inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
-                        if(currentPage < pages.size()) {
-                            currentPage++;
-                            pages.get(currentPage).open(p);
-                        }
-                    });
-                }
-                inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
-                    if(currentPage > 1) {
-                        currentPage--;
-                        pages.get(currentPage).open(p);
+        if(forwardItem != null || backwardsItem != null) {
+            for(Integer key : pages.keySet()) {
+                if(key != 1) {
+                    InventoryMenu inventoryMenu = pages.get(key);
+                    if(forwardItem != null && key != pages.size()) {
+                        inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                            if(currentPage < pages.size()) {
+                                currentPage++;
+                                pages.get(currentPage).open(p);
+                            }
+                        });
                     }
-                });
-                pages.remove(key);
-                pages.put(key, inventoryMenu);
+                    if(backwardsItem != null) {
+                        inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
+                            if(currentPage > 1) {
+                                currentPage--;
+                                pages.get(currentPage).open(p);
+                            }
+                        });
+                    }
+                    pages.remove(key);
+                    pages.put(key, inventoryMenu);
+                }
             }
         }
         super.open(player);

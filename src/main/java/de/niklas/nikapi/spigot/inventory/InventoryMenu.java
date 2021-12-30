@@ -37,6 +37,9 @@ public class InventoryMenu {
         inventory.setItem(index, itemStack);
         actions.put(index, consumer);
     }
+    public void clearInventory() {
+        inventory.clear();
+    }
     public void setSubMenuItem(int index, ItemStack itemStack, InventoryMenu inventoryMenu) {
         setItem(index, itemStack, inventoryMenu::open);
     }

@@ -1,7 +1,7 @@
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\listeners\InventoryClickListener.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\listeners\InventoryCloseListener.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\inventory\InventoryManager.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\inventory\InventoryMenu.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\inventory\PaginatedInventoryMenu.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\exceptions\inventory\InvalidInventorySizeException.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\api\spigot\NikAPI.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\exceptions\inventory\InvalidInventorySizeException.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryManager.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\PaginatedInventoryMenu.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\InventoryClickListener.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryMenu.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\InventoryCloseListener.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\NikAPI.java
