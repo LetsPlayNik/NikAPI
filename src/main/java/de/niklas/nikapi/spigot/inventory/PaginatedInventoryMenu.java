@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
-    private int pageCount = 1;
+    //private int pageCount = 1;
     private int forwardItemIndex;
     private ItemStack forwardItem;
     private int backwardsItemIndex;
@@ -46,8 +46,7 @@ public class PaginatedInventoryMenu extends InventoryMenu {
         backwardsItem = itemStack;
     }
     public void addPage(InventoryMenu inventoryMenu) {
-        pageCount++;
-        pages.put(pageCount, inventoryMenu);
+        pages.put(pages.size() + 2, inventoryMenu);
     }
 
     @Override

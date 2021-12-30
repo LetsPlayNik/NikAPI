@@ -71,6 +71,9 @@ public class NikAPI extends JavaPlugin {
             InventoryMenu test2 = new InventoryMenu(9, "Paginated Inventory 3");
             test2.setItem(4, new ItemStack(Material.DIRT));
             menu.addPage(test2);
+            InventoryMenu test3 = new InventoryMenu(9, "Paginated Inventory 4");
+            test3.setItem(4, new ItemStack(Material.GOLD_INGOT));
+            menu.addPage(test3);
             menu.open((Player) sender);
         }
         return false;
