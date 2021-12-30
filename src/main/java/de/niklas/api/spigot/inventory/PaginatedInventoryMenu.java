@@ -9,8 +9,8 @@ package de.niklas.api.spigot.inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
@@ -24,11 +24,11 @@ public class PaginatedInventoryMenu extends InventoryMenu {
 
     public PaginatedInventoryMenu(int size, String displayName) {
         super(size, displayName);
-        pages = new HashMap<>();
+        pages = new ConcurrentHashMap<>();
     }
     public PaginatedInventoryMenu(int size) {
         super(size);
-        pages = new HashMap<>();
+        pages = new ConcurrentHashMap<>();
     }
 
     public void setForwardItem(int index, ItemStack itemStack) {
@@ -44,12 +44,6 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     public void setBackwardsItem(int index, ItemStack itemStack) {
         backwardsItemIndex = index;
         backwardsItem = itemStack;
-        /*setItem(index, itemStack, player -> {
-            if(currentPage > 1) {
-                currentPage--;
-                pages.get(currentPage).open(player);
-            }
-        });*/
     }
     public void addPage(InventoryMenu inventoryMenu) {
         pageCount++;
@@ -62,12 +56,14 @@ public class PaginatedInventoryMenu extends InventoryMenu {
         for(Integer key : pages.keySet()) {
             if(key != 1) {
                 InventoryMenu inventoryMenu = pages.get(key);
-                inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
-                    if(currentPage < pageCount) {
-                        currentPage++;
-                        pages.get(currentPage).open(p);
-                    }
-                });
+                if(key != pages.size()) {
+                    inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                        if(currentPage < pageCount) {
+                            currentPage++;
+                            pages.get(currentPage).open(p);
+                        }
+                    });
+                }
                 inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
                     if(currentPage > 1) {
                         currentPage--;
