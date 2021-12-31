@@ -9,8 +9,11 @@ package de.niklas.nikapi.spigot.inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
@@ -20,6 +23,8 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     private final ItemStack backwardsItem;
     private final int forwardItemIndex;
     private final ItemStack forwardItem;
+
+    private List<InventoryMenuItem> items = new ArrayList<>();
 
     public PaginatedInventoryMenu(int size, String displayName, int backwardsItemIndex, ItemStack backwardsItem, int forwardItemIndex, ItemStack forwardItem) {
         super(size, displayName);
@@ -38,11 +43,105 @@ public class PaginatedInventoryMenu extends InventoryMenu {
         this.forwardItem = forwardItem;
     }
 
-    /*public void addItem(ItemStack itemStack) {}
-    public void addItem(ItemStack itemStack, Consumer<Player> consumer) {}*/
+    /*public void addItem(ItemStack itemStack, Consumer<Player> consumer) {
+        items.add(new InventoryMenuItem(itemStack, consumer));
+
+    }*/
+    /*public void addItem(ItemStack itemStack) {
+        //Test
+        int page = 1;
+        boolean needSite = true;
+        while(needSite) {
+            System.out.println("Debug 1");
+            System.out.println("Page:) " + page);
+            if(pages.containsKey(page)) {
+                System.out.println("Debug 2");
+                InventoryMenu menu = pages.get(page);
+                System.out.println("Debug 2");
+                //Test
+                for(int i = 0; i < menu.getBukkitInventory().getSize(); i++) {
+                    System.out.println("Debug 3");
+                    if(i != backwardsItemIndex && menu.getBukkitInventory().getItem(i) == null) {
+                        System.out.println("Debug 4");
+                        menu.setItem(i, itemStack);
+                        needSite = false;
+                        break;
+                    } else {
+                        System.out.println("Debug 5");
+                        if(i == menu.getBukkitInventory().getSize() - 1) {
+                            System.out.println("Debug 6");
+                            //Test
+                            InventoryMenu newMenu = new InventoryMenu(menu.getBukkitInventory().getSize(), menu.getBukkitInventory().getName());
+                            newMenu.setItem(1, menu.getBukkitInventory().getItem(i));
+                            addPage(newMenu);
+                            page++;
+                            System.out.println("Neue Seite!");
+                            System.out.println("Page: " + page);
+                            System.out.println("Page Size: " + pages.size());
+                            break;
+                            //TODO create new page.
+                            //Test END
+                        }
+                    }
+                }
+                //Test END
+            } else if(page == 1) {
+                for(int i = 0; i < getBukkitInventory().getSize(); i++) {
+                    if(pages.size() > 0) {
+                        if(i != forwardItemIndex && getBukkitInventory().getItem(i) == null) {
+                            setItem(i, itemStack);
+                            needSite = false;
+                            break;
+                        }
+                    } else {
+                        if(getBukkitInventory().getItem(i) == null) {
+                            setItem(i, itemStack);
+                            needSite = false;
+                            break;
+                        } else {
+                            if(i == getBukkitInventory().getSize() - 1) {
+                                InventoryMenu newMenu = new InventoryMenu(getBukkitInventory().getSize(), getBukkitInventory().getName());
+                                newMenu.setItem(1, getBukkitInventory().getItem(i));
+                                addPage(newMenu);
+                                page++;
+                                System.out.println("Page:( " + page);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }*/
+    //public void addItem(ItemStack itemStack, Consumer<Player> consumer) {}
     public void addPage(InventoryMenu inventoryMenu) {
         pages.put(pages.size() + 2, inventoryMenu);
     }
+
+    /*@Override
+    public void open(Player player) {
+        List<InventoryMenuItem> menuItems = new ArrayList<>();
+        int i = 0;
+        int startItem = 1;
+        int invSize = getBukkitInventory().getSize();
+        int currentPageSize = invSize - 2;
+        int page = 1;
+        int slot = 0;
+        if(items.size() < invSize) {
+        }
+        if(currentPage == 1) {
+            currentPageSize++;
+            if(items.size() <= invSize) {
+                currentPageSize++;
+            }
+        } else {
+        }
+        while(i < getBukkitInventory().getSize()) {
+            i++;
+        }
+        super.open(player);
+    }*/
+
 
     @Override
     public void open(Player player) {

@@ -12,3 +12,6 @@ commands:
   lol:
     description: "test"
     usage: "/lol"
+  add:
+    description: "test"
+    usage: "/add"

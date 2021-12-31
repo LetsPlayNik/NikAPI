@@ -125,6 +125,37 @@ public class NikAPI extends JavaPlugin {
         } else if(command.getName().equalsIgnoreCase("addpage")) {
             PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
             return true;
+        } else if(command.getName().equalsIgnoreCase("add")) {
+            PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory ...", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
+            /*InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
+            lol.setItem(1, new ItemStack(Material.ANVIL));
+            menu.addPage(lol);
+            InventoryMenu lol2 = new InventoryMenu(9, "Paginated Inventory :(");
+            lol.setItem(1, new ItemStack(Material.DIRT));
+            menu.addPage(lol2);*/
+            /*menu.addItem(new ItemStack(Material.DIAMOND));
+            menu.addItem(new ItemStack(Material.EMERALD));
+            menu.addItem(new ItemStack(Material.IRON_INGOT));
+            menu.addItem(new ItemStack(Material.GOLD_INGOT));
+            menu.addItem(new ItemStack(Material.COAL));
+            menu.addItem(new ItemStack(Material.LAPIS_ORE));
+            menu.addItem(new ItemStack(Material.LEATHER));
+            menu.addItem(new ItemStack(Material.DIRT));
+            menu.addItem(new ItemStack(Material.WHEAT));
+            menu.addItem(new ItemStack(Material.LAVA_BUCKET));
+
+            menu.addItem(new ItemStack(Material.ANVIL));*/
+            /*menu.addItem(new ItemStack(Material.EMERALD));
+            menu.addItem(new ItemStack(Material.IRON_INGOT));
+            menu.addItem(new ItemStack(Material.GOLD_INGOT));
+            menu.addItem(new ItemStack(Material.COAL));
+            menu.addItem(new ItemStack(Material.LAPIS_ORE));
+            menu.addItem(new ItemStack(Material.LEATHER));*/
+            //menu.addItem(new ItemStack(Material.DIRT));
+            //menu.addItem(new ItemStack(Material.WHEAT));
+            //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
+            menu.open((Player) sender);
+            return true;
         }
         return false;
     }
