@@ -1,4 +1,4 @@
-package de.niklas.nikapi.spigot.item;
+package de.niklas.nikapi.spigot.item.custom;
 
 /*
  * Project Plugin-API
