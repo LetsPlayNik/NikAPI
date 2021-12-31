@@ -10,19 +10,20 @@ import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class InventoryManager {
 
     private static InventoryManager instance;
 
-    private final Map<Player, InventoryMenu> openedMenus;
+    private final Map<UUID, InventoryMenu> openedMenus;
 
     public InventoryManager() {
         instance = this;
         openedMenus = new HashMap<>();
     }
 
-    public Map<Player, InventoryMenu> getOpenedMenus() {
+    public Map<UUID, InventoryMenu> getOpenedMenus() {
         return openedMenus;
     }
 

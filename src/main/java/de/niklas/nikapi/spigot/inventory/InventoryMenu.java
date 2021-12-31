@@ -24,10 +24,10 @@ public class InventoryMenu {
     }
 
     public void open(Player player) {
-        if(InventoryManager.getInstance().getOpenedMenus().containsKey(player)) {
+        if(InventoryManager.getInstance().getOpenedMenus().containsKey(player.getUniqueId())) {
             player.closeInventory();
         }
-        InventoryManager.getInstance().getOpenedMenus().put(player, this);
+        InventoryManager.getInstance().getOpenedMenus().put(player.getUniqueId(), this);
         player.openInventory(inventory);
     }
     public void setItem(int index, ItemStack itemStack) {

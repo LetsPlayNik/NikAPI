@@ -7,7 +7,6 @@ package de.niklas.nikapi.spigot.listeners;
  */
 
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -16,8 +15,8 @@ public class InventoryCloseListener implements Listener {
 
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
-        if(InventoryManager.getInstance().getOpenedMenus().containsKey((Player) event.getPlayer())) {
-            InventoryManager.getInstance().getOpenedMenus().remove((Player) event.getPlayer());
+        if(InventoryManager.getInstance().getOpenedMenus().containsKey(event.getPlayer().getUniqueId())) {
+            InventoryManager.getInstance().getOpenedMenus().remove(event.getPlayer().getUniqueId());
         }
     }
 }
