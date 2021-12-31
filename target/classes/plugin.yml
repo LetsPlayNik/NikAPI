@@ -2,13 +2,3 @@ name: Spigot-API
 author: Niklas
 version: 1.0.0
 main: de.niklas.nikapi.spigot.NikAPI
-commands:
-  test:
-    description: "Test"
-    usage: "/test"
-  paginated:
-    description: "Test Paginated Menu"
-    usage: "/paginated"
-  lol:
-    description: "test"
-    usage: "/lol"
