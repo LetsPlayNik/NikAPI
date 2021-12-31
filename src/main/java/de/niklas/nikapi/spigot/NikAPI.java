@@ -122,6 +122,9 @@ public class NikAPI extends JavaPlugin {
                 player.sendMessage("Rechtsklick");
             });
             return true;
+        } else if(command.getName().equalsIgnoreCase("addpage")) {
+            PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
+            return true;
         }
         return false;
     }
