@@ -44,6 +44,10 @@ public class ItemBuilder {
         itemStack.addEnchantment(enchantment, level);
         return this;
     }
+    public ItemBuilder addEnchantment(Enchantment enchantment, int level, boolean ignoreLevelLimit) {
+        itemMeta.addEnchant(enchantment, level, ignoreLevelLimit);
+        return this;
+    }
     public ItemBuilder addItemFlags(ItemFlag... flags){
         itemMeta.addItemFlags(flags);
         return this;

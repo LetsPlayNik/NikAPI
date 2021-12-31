@@ -4,4 +4,5 @@ de\niklas\nikapi\spigot\inventory\InventoryMenu.class
 de\niklas\nikapi\spigot\exceptions\inventory\InvalidInventorySizeException.class
 de\niklas\nikapi\spigot\listeners\InventoryCloseListener.class
 de\niklas\nikapi\spigot\listeners\InventoryClickListener.class
+de\niklas\nikapi\spigot\inventory\ItemBuilder.class
 de\niklas\nikapi\spigot\inventory\PaginatedInventoryMenu.class
