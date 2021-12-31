@@ -16,8 +16,8 @@ import java.util.Arrays;
 
 public class ItemBuilder {
 
-    private ItemStack itemStack;
-    private ItemMeta itemMeta;
+    private final ItemStack itemStack;
+    private final ItemMeta itemMeta;
 
     public ItemBuilder(Material material) {
         itemStack = new ItemStack(material);
@@ -54,6 +54,10 @@ public class ItemBuilder {
     }
     public ItemBuilder setDurability(short durability) {
         itemStack.setDurability(durability);
+        return this;
+    }
+    public ItemBuilder setUnbreakable(boolean unbreakable) {
+        itemMeta.spigot().setUnbreakable(unbreakable);
         return this;
     }
     public ItemStack build() {
