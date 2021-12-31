@@ -3,6 +3,8 @@ package de.niklas.nikapi.spigot;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
 import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
+import de.niklas.nikapi.spigot.item.ItemBuilder;
+import de.niklas.nikapi.spigot.item.custom.CustomItem;
 import de.niklas.nikapi.spigot.listeners.InventoryClickListener;
 import de.niklas.nikapi.spigot.listeners.InventoryCloseListener;
 import org.bukkit.Material;
@@ -110,6 +112,15 @@ public class NikAPI extends JavaPlugin {
             menu.setItem(0, new ItemStack(Material.LAVA_BUCKET));
             //menu.addItemStacks(items);
             menu.open((Player) sender);
+            return true;
+        } else if(command.getName().equalsIgnoreCase("customitem")) {
+            CustomItem item = new CustomItem(new ItemBuilder(Material.ARROW).setLore("Dies ist ein Custom Item!").build());
+            item.leftClick(player -> {
+                player.sendMessage("Linksklick");
+            });
+            item.rightClick(player -> {
+                player.sendMessage("Rechtsklick");
+            });
             return true;
         }
         return false;
