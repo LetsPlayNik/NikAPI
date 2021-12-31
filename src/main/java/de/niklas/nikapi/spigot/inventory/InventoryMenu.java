@@ -24,11 +24,11 @@ public class InventoryMenu {
     }
 
     public void open(Player player) {
-        if(InventoryManager.getInstance().getOpenedMenus().containsKey(player.getUniqueId())) {
-            player.closeInventory();
-        }
         InventoryManager.getInstance().getOpenedMenus().put(player.getUniqueId(), this);
         player.openInventory(inventory);
+        if(!InventoryManager.getInstance().getOpenedMenus().containsKey(player.getUniqueId())) {
+            InventoryManager.getInstance().getOpenedMenus().put(player.getUniqueId(), this);
+        }
     }
     public void setItem(int index, ItemStack itemStack) {
         inventory.setItem(index, itemStack);
