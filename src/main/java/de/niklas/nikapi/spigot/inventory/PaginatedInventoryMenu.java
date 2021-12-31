@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
