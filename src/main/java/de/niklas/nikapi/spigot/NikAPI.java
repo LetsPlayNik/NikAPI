@@ -127,6 +127,9 @@ public class NikAPI extends JavaPlugin {
             return true;
         } else if(command.getName().equalsIgnoreCase("add")) {
             PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory ...", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
+            InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
+            lol.setItem(1, new ItemStack(Material.ANVIL));
+            menu.addPage(lol);
             /*InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
             lol.setItem(1, new ItemStack(Material.ANVIL));
             menu.addPage(lol);

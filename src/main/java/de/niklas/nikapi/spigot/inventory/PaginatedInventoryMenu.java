@@ -11,6 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Consumer;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
@@ -163,7 +164,10 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                     });
                 }
                 inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
-                    if(currentPage > 1) {
+                    /*if(currentPage == 2) {
+                        currentPage--;
+                        open(p);
+                    } else */if(currentPage > 1) {
                         currentPage--;
                         pages.get(currentPage).open(p);
                     }
@@ -171,6 +175,28 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                 pages.remove(key);
                 pages.put(key, inventoryMenu);
             }
+            //Test
+            /*InventoryMenu inventoryMenu = pages.get(key);
+            if(key != pages.size()) {
+                inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                    if(currentPage < pages.size()) {
+                        currentPage++;
+                        pages.get(currentPage).open(p);
+                    }
+                });
+            }
+            inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
+                if(currentPage == 2) {
+                    currentPage--;
+                    open(p);
+                } else if(currentPage > 1) {
+                    currentPage--;
+                    pages.get(currentPage).open(p);
+                }
+            });
+            pages.remove(key);
+            pages.put(key, inventoryMenu);*/
+            //Test END
         }
         super.open(player);
     }
