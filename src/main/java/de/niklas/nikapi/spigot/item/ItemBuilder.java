@@ -65,8 +65,10 @@ public class ItemBuilder {
         return itemStack;
     }
 
-    @Override
-    public String toString() {
-        return "ItemBuilder{" + "itemMeta=" + itemMeta + ", itemStack=" + itemStack + "}";
+    public ItemStack getItemStack() {
+        return itemStack;
+    }
+    public ItemMeta getItemMeta() {
+        return itemMeta;
     }
 }
