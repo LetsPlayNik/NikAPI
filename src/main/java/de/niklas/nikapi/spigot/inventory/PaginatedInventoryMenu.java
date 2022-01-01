@@ -9,11 +9,8 @@ package de.niklas.nikapi.spigot.inventory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
@@ -24,7 +21,7 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     private final int forwardItemIndex;
     private final ItemStack forwardItem;
 
-    private List<InventoryMenuItem> items = new ArrayList<>();
+    //private List<InventoryMenuItem> items = new ArrayList<>();
 
     public PaginatedInventoryMenu(int size, String displayName, int backwardsItemIndex, ItemStack backwardsItem, int forwardItemIndex, ItemStack forwardItem) {
         super(size, displayName);

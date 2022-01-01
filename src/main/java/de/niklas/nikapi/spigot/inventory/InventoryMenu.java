@@ -5,24 +5,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
 
 public class InventoryMenu {
 
     private final Inventory inventory;
-    private final Map<Integer, Consumer<Player>> actions;
+    private final Map<Integer, InventoryMenuItem> items;
 
     public InventoryMenu(int size, String displayName) {
         inventory = Bukkit.createInventory(null, size, displayName);
-        actions = new HashMap<>();
+        items = new HashMap<>();
     }
     public InventoryMenu(int size) {
         inventory = Bukkit.createInventory(null, size);
-        actions = new HashMap<>();
+        items = new HashMap<>();
     }
 
     public void open(Player player) {
@@ -32,15 +30,19 @@ public class InventoryMenu {
             InventoryManager.getInstance().getOpenedMenus().put(player.getUniqueId(), this);
         }
     }
+    public void setItem(int index, InventoryMenuItem inventoryMenuItem) {
+        inventory.setItem(index, inventoryMenuItem.getItemStack());
+        items.put(index, inventoryMenuItem);
+    }
     public void setItem(int index, ItemStack itemStack) {
-        inventory.setItem(index, itemStack);
+        setItem(index, new InventoryMenuItem(itemStack));
     }
     public void setItem(int index, ItemStack itemStack, Consumer<Player> consumer) {
-        inventory.setItem(index, itemStack);
-        actions.put(index, consumer);
+        setItem(index, new InventoryMenuItem(itemStack, consumer));
     }
     public void clearInventory() {
         inventory.clear();
+        items.clear();
     }
     public void setSubMenuItem(int index, ItemStack itemStack, InventoryMenu inventoryMenu) {
         setItem(index, itemStack, inventoryMenu::open);
@@ -48,14 +50,20 @@ public class InventoryMenu {
     public void setFillItem(ItemStack itemStack) {
         for(int i = 0; i < inventory.getSize(); i++) {
             if(inventory.getItem(i) == null) {
-                inventory.setItem(i, itemStack);
+                setItem(i, itemStack);
             }
         }
     }
-    public void click(Player player, int slot) {
-        if(actions.containsKey(slot)) {
-            actions.get(slot).accept(player);
+    public void setFillItem(ItemStack itemStack, Consumer<Player> consumer) {
+        for(int i = 0; i < inventory.getSize(); i++) {
+            if(inventory.getItem(i) == null) {
+                setItem(i, itemStack, consumer);
+            }
         }
+    }
+
+    public Map<Integer, InventoryMenuItem> getItems() {
+        return items;
     }
 
     public Inventory getBukkitInventory() {

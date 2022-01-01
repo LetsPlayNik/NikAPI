@@ -16,9 +16,19 @@ public class InventoryMenuItem {
     private final ItemStack itemStack;
     private final Consumer<Player> action;
 
+    public InventoryMenuItem(ItemStack itemStack) {
+        this.itemStack = itemStack;
+        this.action = null;
+    }
     public InventoryMenuItem(ItemStack itemStack, Consumer<Player> action) {
         this.itemStack = itemStack;
         this.action = action;
+    }
+
+    public void click(Player player) {
+        if(action != null) {
+            action.accept(player);
+        }
     }
 
     public Consumer<Player> getAction() {

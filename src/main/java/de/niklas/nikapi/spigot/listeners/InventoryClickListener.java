@@ -18,7 +18,9 @@ public class InventoryClickListener implements Listener {
             if(InventoryManager.getInstance().getOpenedMenus().containsKey(event.getWhoClicked().getUniqueId())) {
                 if(!event.getClickedInventory().getType().equals(InventoryType.PLAYER)) {
                     InventoryMenu menu = InventoryManager.getInstance().getOpenedMenus().get(event.getWhoClicked().getUniqueId());
-                    menu.click((Player) event.getWhoClicked(), event.getSlot());
+                    if(menu.getItems().containsKey(event.getSlot())) {
+                        menu.getItems().get(event.getSlot()).click((Player) event.getWhoClicked());
+                    }
                 }
                 event.setCancelled(true);
             }
