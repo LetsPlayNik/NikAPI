@@ -31,9 +31,6 @@ public class InventoryMenuItem {
         }
     }
 
-    public Consumer<Player> getAction() {
-        return action;
-    }
     public ItemStack getItemStack() {
         return itemStack;
     }
