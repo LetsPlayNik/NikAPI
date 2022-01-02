@@ -1,5 +1,6 @@
 package de.niklas.nikapi.spigot;
 
+import de.niklas.nikapi.spigot.config.JsonConfig;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
 import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
@@ -21,6 +22,8 @@ import java.util.logging.Level;
 
 public class NikAPI extends JavaPlugin {
 
+    private static NikAPI instance;
+
     @Override
     public void onLoad() {
         getServer().getLogger().log(Level.INFO, "Plugin-API wird geladen...");
@@ -36,6 +39,7 @@ public class NikAPI extends JavaPlugin {
     }
 
     public void init(Plugin plugin) {
+        instance = this;
         new InventoryManager();
         initListeners(plugin);
     }
@@ -159,7 +163,14 @@ public class NikAPI extends JavaPlugin {
             //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
             menu.open((Player) sender);
             return true;
+        } else if(command.getName().equalsIgnoreCase("config")) {
+            //JsonConfig config = new JsonConfig("test.json", null);
+            return true;
         }
         return false;
+    }
+
+    public static NikAPI getInstance() {
+        return instance;
     }
 }
