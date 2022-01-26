@@ -6,7 +6,6 @@ package de.niklas.nikapi.spigot.inventory;
  * Created at 31.12.2021 - 16:43Uhr
  */
 
-import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.function.Consumer;
