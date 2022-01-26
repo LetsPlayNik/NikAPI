@@ -57,6 +57,9 @@ public class NikAPI extends JavaPlugin {
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
                 player.getPlayer().sendMessage("Hallo :D");
+                player.getPlayer().sendMessage("Leftclick: " + player.isLeftClick());
+                player.getPlayer().sendMessage("Rightclick: " + player.isRightClick());
+                player.getPlayer().sendMessage("Shiftclick: " + player.isShiftClick());
             });
             menu.setItem(2, new ItemStack(Material.DIRT), player -> {
                 player.getPlayer().sendMessage("Tschau :D");

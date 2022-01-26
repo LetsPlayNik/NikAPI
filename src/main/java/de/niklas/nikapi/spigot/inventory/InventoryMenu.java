@@ -39,9 +39,6 @@ public class InventoryMenu {
     public void setItem(int index, ItemStack itemStack) {
         setItem(index, new InventoryMenuItem(itemStack));
     }
-    /*public void setItem(int index, ItemStack itemStack, Consumer<Player> consumer) {
-        setItem(index, new InventoryMenuItem(itemStack, consumer));
-    }*/
     public void setItem(int index, ItemStack itemStack, Consumer<InventoryMenuAction> action) {
         setItem(index, new InventoryMenuItem(itemStack, action));
     }
@@ -50,7 +47,6 @@ public class InventoryMenu {
         items.clear();
     }
     public void setSubMenuItem(int index, ItemStack itemStack, InventoryMenu inventoryMenu) {
-        //setItem(index, itemStack, inventoryMenu::open);
         setItem(index, itemStack, action -> {
             inventoryMenu.open(action.getPlayer());
         });
@@ -62,13 +58,6 @@ public class InventoryMenu {
             }
         }
     }
-    /*public void setFillItem(ItemStack itemStack, Consumer<Player> consumer) {
-        for(int i = 0; i < inventory.getSize(); i++) {
-            if(inventory.getItem(i) == null) {
-                setItem(i, itemStack, consumer);
-            }
-        }
-    }*/
     public void setFillItem(ItemStack itemStack, Consumer<InventoryMenuAction> action) {
         for(int i = 0; i < inventory.getSize(); i++) {
             if(inventory.getItem(i) == null) {

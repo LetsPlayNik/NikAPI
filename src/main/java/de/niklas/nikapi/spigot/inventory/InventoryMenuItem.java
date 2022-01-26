@@ -14,32 +14,16 @@ import java.util.function.Consumer;
 public class InventoryMenuItem {
 
     private final ItemStack itemStack;
-    //private final Consumer<Player> action;
     private final Consumer<InventoryMenuAction> action;
 
     public InventoryMenuItem(ItemStack itemStack) {
         this.itemStack = itemStack;
         this.action = null;
     }
-    /*public InventoryMenuItem(ItemStack itemStack, Consumer<Player> action) {
-        this.itemStack = itemStack;
-        this.action = action;
-    }*/
     public InventoryMenuItem(ItemStack itemStack, Consumer<InventoryMenuAction> action) {
         this.itemStack = itemStack;
         this.action = action;
     }
-
-    /*public void click(Player player) {
-        if(action != null) {
-            action.accept(player);
-        }
-    }*/
-    /*public void click(InventoryMenuAction menuAction) {
-        if(action != null) {
-            action.accept(menuAction);
-        }
-    }*/
 
     public Consumer<InventoryMenuAction> getAction() {
         return action;

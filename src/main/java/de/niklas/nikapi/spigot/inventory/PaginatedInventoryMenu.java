@@ -11,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 
 public class PaginatedInventoryMenu extends InventoryMenu {
 
@@ -146,7 +145,6 @@ public class PaginatedInventoryMenu extends InventoryMenu {
             setItem(forwardItemIndex, forwardItem, action -> {
                 if(currentPage < pages.size()) {
                     currentPage++;
-                    //pages.get(currentPage).open(p);
                     pages.get(currentPage).open(action.getPlayer());
                 }
             });
@@ -158,7 +156,6 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                     inventoryMenu.setItem(forwardItemIndex, forwardItem, action -> {
                         if(currentPage < pages.size()) {
                             currentPage++;
-                            //pages.get(currentPage).open(p);
                             pages.get(currentPage).open(action.getPlayer());
                         }
                     });
@@ -169,7 +166,6 @@ public class PaginatedInventoryMenu extends InventoryMenu {
                         open(p);
                     } else */if(currentPage > 1) {
                         currentPage--;
-                        //pages.get(currentPage).open(p);
                         pages.get(currentPage).open(action.getPlayer());
                     }
                 });
