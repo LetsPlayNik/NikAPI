@@ -4,9 +4,11 @@ de\niklas\nikapi\spigot\item\custom\CustomItem.class
 de\niklas\nikapi\spigot\NikAPI.class
 de\niklas\nikapi\spigot\exceptions\inventory\InvalidInventorySizeException.class
 de\niklas\nikapi\spigot\listeners\InventoryCloseListener.class
+de\niklas\nikapi\spigot\config\YAMLConfig.class
 de\niklas\nikapi\spigot\inventory\InventoryMenuItem.class
 de\niklas\nikapi\spigot\item\custom\ClickType.class
 de\niklas\nikapi\spigot\listeners\InventoryClickListener.class
+de\niklas\nikapi\spigot\listeners\PlayerQuitListener.class
 de\niklas\nikapi\spigot\item\ItemBuilder.class
 de\niklas\nikapi\spigot\inventory\InventoryMenu.class
 de\niklas\nikapi\spigot\inventory\PaginatedInventoryMenu.class

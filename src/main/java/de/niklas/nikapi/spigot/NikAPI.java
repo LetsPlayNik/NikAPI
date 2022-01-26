@@ -8,6 +8,7 @@ import de.niklas.nikapi.spigot.item.ItemBuilder;
 import de.niklas.nikapi.spigot.item.custom.CustomItem;
 import de.niklas.nikapi.spigot.listeners.InventoryClickListener;
 import de.niklas.nikapi.spigot.listeners.InventoryCloseListener;
+import de.niklas.nikapi.spigot.listeners.PlayerQuitListener;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -44,11 +45,12 @@ public class NikAPI extends JavaPlugin {
         initListeners(plugin);
     }
     public void initListeners(Plugin plugin) {
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
         getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
     }
 
-    @Override
+    /*@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
             //System.out.println(getServer().getClass().getPackage().getName().split("\\.")[3]);
@@ -161,14 +163,14 @@ public class NikAPI extends JavaPlugin {
             //menu.addItem(new ItemStack(Material.DIRT));
             //menu.addItem(new ItemStack(Material.WHEAT));
             //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
-            menu.open((Player) sender);
+            /*menu.open((Player) sender);
             return true;
         } else if(command.getName().equalsIgnoreCase("config")) {
             //JsonConfig config = new JsonConfig("test.json", null);
             return true;
         }
         return false;
-    }
+    }*/
 
     public static NikAPI getInstance() {
         return instance;
