@@ -8,11 +8,13 @@ package de.niklas.nikapi.spigot.item;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 public class ItemBuilder {
 

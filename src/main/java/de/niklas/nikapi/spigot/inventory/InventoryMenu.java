@@ -2,6 +2,7 @@ package de.niklas.nikapi.spigot.inventory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -13,6 +14,7 @@ public class InventoryMenu {
 
     private final Inventory inventory;
     private final Map<Integer, InventoryMenuItem> items;
+    private Consumer<InventoryClickEvent> clickListener;
 
     public InventoryMenu(int size, String displayName) {
         inventory = Bukkit.createInventory(null, size, displayName);
@@ -60,6 +62,13 @@ public class InventoryMenu {
                 setItem(i, itemStack, consumer);
             }
         }
+    }
+    public void addClickListener(Consumer<InventoryClickEvent> event) {
+        clickListener = event;
+    }
+
+    public Consumer<InventoryClickEvent> getClickListener() {
+        return clickListener;
     }
 
     public Map<Integer, InventoryMenuItem> getItems() {

@@ -22,8 +22,6 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     private final int forwardItemIndex;
     private final ItemStack forwardItem;
 
-    //private List<InventoryMenuItem> items = new ArrayList<>();
-
     public PaginatedInventoryMenu(int size, String displayName, int backwardsItemIndex, ItemStack backwardsItem, int forwardItemIndex, ItemStack forwardItem) {
         super(size, displayName);
         pages = new ConcurrentHashMap<>();
