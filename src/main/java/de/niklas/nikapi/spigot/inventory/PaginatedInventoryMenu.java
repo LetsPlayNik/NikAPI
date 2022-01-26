@@ -143,10 +143,11 @@ public class PaginatedInventoryMenu extends InventoryMenu {
     public void open(Player player) {
         pages.put(1, getInventoryMenu());
         if(pages.size() > 1) {
-            setItem(forwardItemIndex, forwardItem, p -> {
+            setItem(forwardItemIndex, forwardItem, action -> {
                 if(currentPage < pages.size()) {
                     currentPage++;
-                    pages.get(currentPage).open(p);
+                    //pages.get(currentPage).open(p);
+                    pages.get(currentPage).open(action.getPlayer());
                 }
             });
         }
@@ -154,20 +155,22 @@ public class PaginatedInventoryMenu extends InventoryMenu {
             if(key != 1) {
                 InventoryMenu inventoryMenu = pages.get(key);
                 if(key != pages.size()) {
-                    inventoryMenu.setItem(forwardItemIndex, forwardItem, p -> {
+                    inventoryMenu.setItem(forwardItemIndex, forwardItem, action -> {
                         if(currentPage < pages.size()) {
                             currentPage++;
-                            pages.get(currentPage).open(p);
+                            //pages.get(currentPage).open(p);
+                            pages.get(currentPage).open(action.getPlayer());
                         }
                     });
                 }
-                inventoryMenu.setItem(backwardsItemIndex, backwardsItem, p -> {
+                inventoryMenu.setItem(backwardsItemIndex, backwardsItem, action -> {
                     /*if(currentPage == 2) {
                         currentPage--;
                         open(p);
                     } else */if(currentPage > 1) {
                         currentPage--;
-                        pages.get(currentPage).open(p);
+                        //pages.get(currentPage).open(p);
+                        pages.get(currentPage).open(action.getPlayer());
                     }
                 });
                 pages.remove(key);

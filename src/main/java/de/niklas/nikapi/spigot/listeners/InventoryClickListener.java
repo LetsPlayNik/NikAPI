@@ -2,6 +2,7 @@ package de.niklas.nikapi.spigot.listeners;
 
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
+import de.niklas.nikapi.spigot.inventory.InventoryMenuAction;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -22,7 +23,11 @@ public class InventoryClickListener implements Listener {
                         menu.getClickListener().accept(event);
                     }
                     if(menu.getItems().containsKey(event.getSlot())) {
-                        menu.getItems().get(event.getSlot()).click((Player) event.getWhoClicked());
+                        //menu.getItems().get(event.getSlot()).click((Player) event.getWhoClicked());
+                        //menu.getItems().get(event.getSlot()).click(new InventoryMenuAction((Player) event.getWhoClicked(), event.isLeftClick(), event.isRightClick(), event.isShiftClick()));
+                        if(menu.getItems().get(event.getSlot()).getAction() != null) {
+                            menu.getItems().get(event.getSlot()).getAction().accept(new InventoryMenuAction((Player) event.getWhoClicked(), event.isLeftClick(), event.isRightClick(), event.isShiftClick()));
+                        }
                     }
                 }
                 event.setCancelled(true);

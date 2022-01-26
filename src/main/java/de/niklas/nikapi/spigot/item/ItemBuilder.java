@@ -62,6 +62,7 @@ public class ItemBuilder {
         itemMeta.spigot().setUnbreakable(unbreakable);
         return this;
     }
+    //public ItemBuilder addAction(Consumer)
     public ItemStack build() {
         itemStack.setItemMeta(itemMeta);
         return itemStack;

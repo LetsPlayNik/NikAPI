@@ -50,21 +50,21 @@ public class NikAPI extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
     }
 
-    /*@Override
+    @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
             //System.out.println(getServer().getClass().getPackage().getName().split("\\.")[3]);
             InventoryMenu menu = new InventoryMenu(9, "Test GUI");
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
-                player.sendMessage("Hallo :D");
+                player.getPlayer().sendMessage("Hallo :D");
             });
             menu.setItem(2, new ItemStack(Material.DIRT), player -> {
-                player.sendMessage("Tschau :D");
+                player.getPlayer().sendMessage("Tschau :D");
             });
             menu.setItem(3, new ItemStack(Material.DIAMOND));
             InventoryMenu subMenu = new InventoryMenu(9, "Nice GUI");
             subMenu.setItem(1, new ItemStack(Material.DIAMOND), player -> {
-                player.sendMessage("Sub Menu works");
+                player.getPlayer().sendMessage("Sub Menu works");
             });
             subMenu.setFillItem(new ItemStack(Material.WHEAT));
             menu.setSubMenuItem(4, new ItemStack(Material.ANVIL), subMenu);
@@ -73,7 +73,7 @@ public class NikAPI extends JavaPlugin {
         } else if(command.getName().equals("paginated")) {
             PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
             menu.setItem(1, new ItemStack(Material.ARROW), player -> {
-                player.sendMessage("Hallo :D");
+                player.getPlayer().sendMessage("Hallo :D");
             });
             InventoryMenu test = new InventoryMenu(9, "Paginated Inventory 2");
             test.setItem(4, new ItemStack(Material.DIAMOND));
@@ -163,14 +163,14 @@ public class NikAPI extends JavaPlugin {
             //menu.addItem(new ItemStack(Material.DIRT));
             //menu.addItem(new ItemStack(Material.WHEAT));
             //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
-            /*menu.open((Player) sender);
+            menu.open((Player) sender);
             return true;
         } else if(command.getName().equalsIgnoreCase("config")) {
             //JsonConfig config = new JsonConfig("test.json", null);
             return true;
         }
         return false;
-    }*/
+    }
 
     public static NikAPI getInstance() {
         return instance;
