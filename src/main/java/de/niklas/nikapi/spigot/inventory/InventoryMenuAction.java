@@ -14,12 +14,14 @@ public class InventoryMenuAction {
     private final boolean isLeftClick;
     private final boolean isRightClick;
     private final boolean isShiftClick;
+    private final boolean isMiddleMouseClick;
 
-    public InventoryMenuAction(Player player, boolean isLeftClick, boolean isRightClick, boolean isShiftClick) {
+    public InventoryMenuAction(Player player, boolean isLeftClick, boolean isRightClick, boolean isShiftClick, boolean isMiddleMouseClick) {
         this.player = player;
         this.isLeftClick = isLeftClick;
         this.isRightClick = isRightClick;
         this.isShiftClick = isShiftClick;
+        this.isMiddleMouseClick = isMiddleMouseClick;
     }
 
     public Player getPlayer() {
@@ -33,5 +35,8 @@ public class InventoryMenuAction {
     }
     public boolean isShiftClick() {
         return isShiftClick;
+    }
+    public boolean isMiddleMouseClick() {
+        return isMiddleMouseClick;
     }
 }

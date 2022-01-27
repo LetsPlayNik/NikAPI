@@ -60,6 +60,7 @@ public class NikAPI extends JavaPlugin {
                 player.getPlayer().sendMessage("Leftclick: " + player.isLeftClick());
                 player.getPlayer().sendMessage("Rightclick: " + player.isRightClick());
                 player.getPlayer().sendMessage("Shiftclick: " + player.isShiftClick());
+                player.getPlayer().sendMessage("Middle mouse click: " + player.isMiddleMouseClick());
             });
             menu.setItem(2, new ItemStack(Material.DIRT), player -> {
                 player.getPlayer().sendMessage("Tschau :D");
