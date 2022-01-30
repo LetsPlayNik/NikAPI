@@ -3,8 +3,6 @@ package de.niklas.nikapi.spigot;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
 import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
-import de.niklas.nikapi.spigot.item.ItemBuilder;
-import de.niklas.nikapi.spigot.item.custom.CustomItem;
 import de.niklas.nikapi.spigot.item.custom.mob.CustomMob;
 import de.niklas.nikapi.spigot.item.custom.mob.LootItem;
 import de.niklas.nikapi.spigot.item.custom.mob.MobManager;
@@ -126,15 +124,6 @@ public class NikAPI extends JavaPlugin {
             //menu.addItemStacks(items);
             menu.open((Player) sender);
             return true;
-        } else if(command.getName().equalsIgnoreCase("customitem")) {
-            CustomItem item = new CustomItem(new ItemBuilder(Material.ARROW).setLore("Dies ist ein Custom Item!").build());
-            item.leftClick(player -> {
-                player.sendMessage("Linksklick");
-            });
-            item.rightClick(player -> {
-                player.sendMessage("Rechtsklick");
-            });
-            return true;
         } else if(command.getName().equalsIgnoreCase("addpage")) {
             PaginatedInventoryMenu menu = new PaginatedInventoryMenu(9, "Paginated Inventory", 0, new ItemStack(Material.ARROW), 8, new ItemStack(Material.ARROW));
             return true;
@@ -179,6 +168,7 @@ public class NikAPI extends JavaPlugin {
         if(command.getName().equalsIgnoreCase("spawn")) {
             CustomMob mob = new CustomMob("Test Zombie - §c100/100❤", true, 100, EntityType.ZOMBIE, new ItemStack(Material.DIAMOND_AXE), null, new LootItem(new ItemStack(Material.DIAMOND), 30), new LootItem(new ItemStack(Material.DIAMOND_HOE), 60), new LootItem(new ItemStack(Material.DIAMOND_AXE), 10));
             mob.spawn(((Player) sender).getLocation());
+            return true;
 
             /*@EventHandler
             public void onEntityDamage(EntityDamageEvent event) {
