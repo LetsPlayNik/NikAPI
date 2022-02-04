@@ -1,16 +1,12 @@
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\CustomMob.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\YAMLConfig.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\MobManager.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\mob\MobManager.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryMenu.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\mob\CustomMob.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\JsonConfig.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\ItemBuilder.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\PlayerQuitListener.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\NikAPI.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryMenuAction.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\CustomItem.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\LootItem.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\ClickType.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\CustomItemManager.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\exceptions\inventory\InvalidInventorySizeException.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryMenuItem.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\EntityDeathListener.java
@@ -20,3 +16,4 @@ E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\ConfigManager.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\InventoryClickListener.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\InventoryCloseListener.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\mob\LootItem.java

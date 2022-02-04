@@ -13,6 +13,7 @@ import java.util.Random;
 
 public class LootItem {
 
+    //MobDrop
     private ItemStack itemStack;
     private int min = 1, max = 1;
     private double dropRate;

@@ -1,5 +1,6 @@
 package de.niklas.nikapi.spigot;
 
+import de.niklas.nikapi.spigot.config.YAMLConfig;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
 import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
@@ -16,6 +17,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -176,6 +178,18 @@ public class NikAPI extends JavaPlugin {
                 LivingEntity livingEntity = (LivingEntity) event.getEntity();
                 livingEntity.setCustomName("Test Zombie - " + ChatColor.RED + (int) livingEntity.getHealth() + "/" + (int) livingEntity.getMaxHealth() + "❤");
             }*/
+        }
+        if(command.getName().equalsIgnoreCase("ymlconfig")) {
+            try {
+                YAMLConfig config = new YAMLConfig("plugins/API", "test.yml");
+                config.addDefaultEntry("Test", "Wow");
+                config.addDefaultEntry("Wow", "LOL");
+                config.save();
+                System.out.println(config.getString("Test"));
+                System.out.println(config.getString("Wow"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return false;
     }

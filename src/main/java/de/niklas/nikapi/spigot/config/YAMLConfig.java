@@ -6,40 +6,71 @@ package de.niklas.nikapi.spigot.config;
  * Created at 01.01.2022 - 16:49Uhr
  */
 
-import de.niklas.nikapi.spigot.NikAPI;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Map;
+import java.util.List;
 
 public class YAMLConfig {
 
-    //TODO add YAML Config Helper
-    /*private final String filename;
+    private final String filename;
     private final String subFolder;
+    private FileConfiguration config = null;
+    private File configFile = null;
 
-    private FileConfiguration fileConfiguration = null;
-    private Map<String, Object>
-    private File file = null;*/
-
-    /*public YAMLConfig(String filename, String subFolder) {
-        this.filename = filename;
-        this.subFolder = subFolder;
-    }*/
-    /*public YAMLConfig(String filename) {
-        this.filename = filename;
+    public YAMLConfig(String filename) throws IOException {
         this.subFolder = null;
+        this.filename = filename;
+        configFile = new File(filename);
+        if(!configFile.exists()) {
+            configFile.createNewFile();
+        }
+        config = YamlConfiguration.loadConfiguration(configFile);
+    }
+    public YAMLConfig(String subFolder, String filename) throws IOException {
+        this.subFolder = subFolder;
+        this.filename = filename;
+        configFile = new File(subFolder, filename);
+        if(!configFile.exists()) {
+            new File(subFolder).mkdirs();
+            configFile.createNewFile();
+        }
+        config = YamlConfiguration.loadConfiguration(configFile);
     }
 
-    public void set(String key, String value) {}
-
+    public void addEntry(String key, Object value) {
+        getConfig().set(key, value);
+    }
+    public void addDefaultEntry(String key, Object value) {
+        if(existEntry(key)) return;
+        addEntry(key, value);
+    }
     public void save() throws IOException {
-        //TODO save the file
-        if(fileConfiguration != null && file != null) {
-            NikAPI.getInstance().getConfig().save(file);
-        } else {
+        getConfig().save(configFile);
+    }
 
-        }
-    }*/
+    public String getString(String key) {
+        return getConfig().getString(key);
+    }
+    public boolean getBoolean(String key) {
+        return getConfig().getBoolean(key);
+    }
+    public int getInteger(String key) {
+        return getConfig().getInt(key);
+    }
+    public double getDouble(String key) {
+        return getConfig().getDouble(key);
+    }
+    public List<?> getList(String key) {
+        return getConfig().getList(key);
+    }
+    public boolean existEntry(String key) {
+        return getConfig().contains(key);
+    }
+
+    public FileConfiguration getConfig() {
+        return config;
+    }
 }

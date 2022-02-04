@@ -21,3 +21,6 @@ commands:
   spawn:
     description: "spawns a custom mob"
     usage: "/spawn"
+  ymlconfig:
+    description: "test config"
+    usage: "/ymlconfig"
