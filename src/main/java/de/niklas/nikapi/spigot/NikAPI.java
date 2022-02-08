@@ -8,7 +8,8 @@ import de.niklas.nikapi.spigot.item.custom.mob.CustomMob;
 import de.niklas.nikapi.spigot.item.custom.mob.LootItem;
 import de.niklas.nikapi.spigot.item.custom.mob.MobManager;
 import de.niklas.nikapi.spigot.listeners.*;
-import org.bukkit.Material;
+import de.niklas.nikapi.spigot.nms.MinecraftVersion;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.EntityType;
@@ -18,6 +19,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
@@ -190,6 +192,39 @@ public class NikAPI extends JavaPlugin {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        if(command.getName().equalsIgnoreCase("customworld")) {
+            String worldName = "custombiome";
+            String biome = "DESERT";
+            if(MinecraftVersion.getVersion() != null) {
+                System.out.println(MinecraftVersion.getVersion().name());
+            }
+            //String versionPath = "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().replace(".", ",").split(",")[3];
+            String versionPath = "net.minecraft.server." + Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3];
+            try {
+                Class clazz = Class.forName(versionPath + ".BiomeBase");
+                Field[] fields = clazz.getDeclaredFields();
+                for(int i = 0; i < fields.length; i++) {
+                    System.out.println("Field: " + fields[i].toString());
+                }
+                /*Field plainsField = clazz.getDeclaredField(biome);
+                plainsField.setAccessible(true);
+                Object plainsBiome = plainsField.get(null);
+                Field biomesField = clazz.getDeclaredField("biomes");
+                biomesField.setAccessible(true);
+                Object[] biomes = (Object[]) biomesField.get(null);
+                for(int i = 0; i < biomes.length; i++) {
+                    biomes[i] = plainsBiome;
+                }
+                biomesField.set(null, biomes);
+                WorldCreator worldCreator = new WorldCreator(worldName);
+                worldCreator.environment(World.Environment.NORMAL);
+                worldCreator.type(WorldType.LARGE_BIOMES);
+                Bukkit.createWorld(worldCreator);*/
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+            return  true;
         }
         return false;
     }

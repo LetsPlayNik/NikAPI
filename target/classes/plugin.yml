@@ -24,3 +24,6 @@ commands:
   ymlconfig:
     description: "test config"
     usage: "/ymlconfig"
+  customworld:
+    description: "creates a custom world"
+    usage: "/customworld"

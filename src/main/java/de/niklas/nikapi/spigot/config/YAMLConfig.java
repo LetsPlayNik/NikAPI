@@ -15,14 +15,10 @@ import java.util.List;
 
 public class YAMLConfig {
 
-    private final String filename;
-    private final String subFolder;
-    private FileConfiguration config = null;
-    private File configFile = null;
+    private final FileConfiguration config;
+    private final File configFile;
 
     public YAMLConfig(String filename) throws IOException {
-        this.subFolder = null;
-        this.filename = filename;
         configFile = new File(filename);
         if(!configFile.exists()) {
             configFile.createNewFile();
@@ -30,8 +26,6 @@ public class YAMLConfig {
         config = YamlConfiguration.loadConfiguration(configFile);
     }
     public YAMLConfig(String subFolder, String filename) throws IOException {
-        this.subFolder = subFolder;
-        this.filename = filename;
         configFile = new File(subFolder, filename);
         if(!configFile.exists()) {
             new File(subFolder).mkdirs();
