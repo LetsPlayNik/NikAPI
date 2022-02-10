@@ -2,6 +2,7 @@ de\niklas\nikapi\spigot\inventory\InventoryManager.class
 de\niklas\nikapi\spigot\NikAPI.class
 de\niklas\nikapi\spigot\item\custom\mob\MobManager.class
 de\niklas\nikapi\spigot\listeners\EntityDeathListener.class
+de\niklas\nikapi\spigot\nms\MinecraftVersion.class
 de\niklas\nikapi\spigot\exceptions\inventory\InvalidInventorySizeException.class
 de\niklas\nikapi\spigot\listeners\InventoryCloseListener.class
 de\niklas\nikapi\spigot\config\YAMLConfig.class
