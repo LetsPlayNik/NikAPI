@@ -1,48 +1,13 @@
 package de.niklas.nikapi.spigot;
 
-import de.niklas.nikapi.spigot.config.Storage;
-import de.niklas.nikapi.spigot.config.Test;
-import de.niklas.nikapi.spigot.config.YAMLConfig;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
-import de.niklas.nikapi.spigot.inventory.InventoryMenu;
-import de.niklas.nikapi.spigot.inventory.PaginatedInventoryMenu;
-import de.niklas.nikapi.spigot.item.custom.mob.CustomMob;
-import de.niklas.nikapi.spigot.item.custom.mob.LootItem;
 import de.niklas.nikapi.spigot.item.custom.mob.MobManager;
 import de.niklas.nikapi.spigot.listeners.*;
-import de.niklas.nikapi.spigot.nms.MinecraftVersion;
-import org.bukkit.*;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
-import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.IOException;
-import java.lang.reflect.Field;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.logging.Level;
-
-public class NikAPI extends JavaPlugin {
+public class NikAPI {
 
     private static NikAPI instance;
-
-    @Override
-    public void onLoad() {
-        getServer().getLogger().log(Level.INFO, "Plugin-API wird geladen...");
-    }
-    @Override
-    public void onEnable() {
-        init(this);
-        getServer().getLogger().log(Level.INFO, "Plugin-API wurde aktiviert.");
-    }
-    @Override
-    public void onDisable() {
-        getServer().getLogger().log(Level.INFO, "Plugin-API wurde deaktiviert.");
-    }
 
     public void init(Plugin plugin) {
         instance = this;
@@ -51,13 +16,18 @@ public class NikAPI extends JavaPlugin {
         initListeners(plugin);
     }
     public void initListeners(Plugin plugin) {
-        getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
-        getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
-        getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
-        getServer().getPluginManager().registerEvents(new EntityDeathListener(), plugin);
+        //getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
+        //getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
+        //getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
+        //getServer().getPluginManager().registerEvents(new EntityDeathListener(), plugin);
+
+        plugin.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
+        plugin.getServer().getPluginManager().registerEvents(new EntityDeathListener(), plugin);
     }
 
-    @Override
+    /*@Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equals("test")) {
             //System.out.println(getServer().getClass().getPackage().getName().split("\\.")[3]);
@@ -97,17 +67,17 @@ public class NikAPI extends JavaPlugin {
             menu.addPage(test3);
 
             InventoryMenu test4 = new InventoryMenu(9, "Paginated Inventory 5");
-            /*List<ItemStack> items = new LinkedList<>();
-            items.add(new ItemStack(Material.DIAMOND));
-            items.add(new ItemStack(Material.EMERALD));
-            items.add(new ItemStack(Material.IRON_INGOT));
-            items.add(new ItemStack(Material.GOLD_INGOT));
-            items.add(new ItemStack(Material.COAL));
-            items.add(new ItemStack(Material.LAPIS_ORE));
-            items.add(new ItemStack(Material.LEATHER));
-            items.add(new ItemStack(Material.DIRT));
-            items.add(new ItemStack(Material.WHEAT));
-            test4.addItemStacks(items);*/
+            //List<ItemStack> items = new LinkedList<>();
+            //items.add(new ItemStack(Material.DIAMOND));
+            //items.add(new ItemStack(Material.EMERALD));
+            //items.add(new ItemStack(Material.IRON_INGOT));
+            //items.add(new ItemStack(Material.GOLD_INGOT));
+            //items.add(new ItemStack(Material.COAL));
+            //items.add(new ItemStack(Material.LAPIS_ORE));
+            //items.add(new ItemStack(Material.LEATHER));
+            //items.add(new ItemStack(Material.DIRT));
+            //items.add(new ItemStack(Material.WHEAT));
+            //test4.addItemStacks(items);
             menu.addPage(test4);
 
             InventoryMenu test5 = new InventoryMenu(9, "Paginated Inventory 6");
@@ -138,30 +108,30 @@ public class NikAPI extends JavaPlugin {
             InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
             lol.setItem(1, new ItemStack(Material.ANVIL));
             menu.addPage(lol);
-            /*InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
-            lol.setItem(1, new ItemStack(Material.ANVIL));
-            menu.addPage(lol);
-            InventoryMenu lol2 = new InventoryMenu(9, "Paginated Inventory :(");
-            lol.setItem(1, new ItemStack(Material.DIRT));
-            menu.addPage(lol2);*/
-            /*menu.addItem(new ItemStack(Material.DIAMOND));
-            menu.addItem(new ItemStack(Material.EMERALD));
-            menu.addItem(new ItemStack(Material.IRON_INGOT));
-            menu.addItem(new ItemStack(Material.GOLD_INGOT));
-            menu.addItem(new ItemStack(Material.COAL));
-            menu.addItem(new ItemStack(Material.LAPIS_ORE));
-            menu.addItem(new ItemStack(Material.LEATHER));
-            menu.addItem(new ItemStack(Material.DIRT));
-            menu.addItem(new ItemStack(Material.WHEAT));
-            menu.addItem(new ItemStack(Material.LAVA_BUCKET));
+            //InventoryMenu lol = new InventoryMenu(9, "Paginated Inventory :)");
+            //lol.setItem(1, new ItemStack(Material.ANVIL));
+            //menu.addPage(lol);
+            //InventoryMenu lol2 = new InventoryMenu(9, "Paginated Inventory :(");
+            //lol.setItem(1, new ItemStack(Material.DIRT));
+            //menu.addPage(lol2);
+            //menu.addItem(new ItemStack(Material.DIAMOND));
+            //menu.addItem(new ItemStack(Material.EMERALD));
+            //menu.addItem(new ItemStack(Material.IRON_INGOT));
+            //menu.addItem(new ItemStack(Material.GOLD_INGOT));
+            //menu.addItem(new ItemStack(Material.COAL));
+            //menu.addItem(new ItemStack(Material.LAPIS_ORE));
+            //menu.addItem(new ItemStack(Material.LEATHER));
+            //menu.addItem(new ItemStack(Material.DIRT));
+            //menu.addItem(new ItemStack(Material.WHEAT));
+            //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
 
-            menu.addItem(new ItemStack(Material.ANVIL));*/
-            /*menu.addItem(new ItemStack(Material.EMERALD));
-            menu.addItem(new ItemStack(Material.IRON_INGOT));
-            menu.addItem(new ItemStack(Material.GOLD_INGOT));
-            menu.addItem(new ItemStack(Material.COAL));
-            menu.addItem(new ItemStack(Material.LAPIS_ORE));
-            menu.addItem(new ItemStack(Material.LEATHER));*/
+            //menu.addItem(new ItemStack(Material.ANVIL));
+            //menu.addItem(new ItemStack(Material.EMERALD));
+            //menu.addItem(new ItemStack(Material.IRON_INGOT));
+            //menu.addItem(new ItemStack(Material.GOLD_INGOT));
+            //menu.addItem(new ItemStack(Material.COAL));
+            //menu.addItem(new ItemStack(Material.LAPIS_ORE));
+            //menu.addItem(new ItemStack(Material.LEATHER));
             //menu.addItem(new ItemStack(Material.DIRT));
             //menu.addItem(new ItemStack(Material.WHEAT));
             //menu.addItem(new ItemStack(Material.LAVA_BUCKET));
@@ -176,12 +146,12 @@ public class NikAPI extends JavaPlugin {
             mob.spawn(((Player) sender).getLocation());
             return true;
 
-            /*@EventHandler
-            public void onEntityDamage(EntityDamageEvent event) {
-                if(!MobManager.getInstance().getCustomMobs().containsKey(event.getEntity())) return;
-                LivingEntity livingEntity = (LivingEntity) event.getEntity();
-                livingEntity.setCustomName("Test Zombie - " + ChatColor.RED + (int) livingEntity.getHealth() + "/" + (int) livingEntity.getMaxHealth() + "❤");
-            }*/
+            //@EventHandler
+            //public void onEntityDamage(EntityDamageEvent event) {
+                //if(!MobManager.getInstance().getCustomMobs().containsKey(event.getEntity())) return;
+                //LivingEntity livingEntity = (LivingEntity) event.getEntity();
+                //livingEntity.setCustomName("Test Zombie - " + ChatColor.RED + (int) livingEntity.getHealth() + "/" + (int) livingEntity.getMaxHealth() + "❤");
+            //}
         }
         if(command.getName().equalsIgnoreCase("ymlconfig")) {
             try {
@@ -209,20 +179,20 @@ public class NikAPI extends JavaPlugin {
                 for(int i = 0; i < fields.length; i++) {
                     System.out.println("Field: " + fields[i].toString());
                 }
-                /*Field plainsField = clazz.getDeclaredField(biome);
-                plainsField.setAccessible(true);
-                Object plainsBiome = plainsField.get(null);
-                Field biomesField = clazz.getDeclaredField("biomes");
-                biomesField.setAccessible(true);
-                Object[] biomes = (Object[]) biomesField.get(null);
-                for(int i = 0; i < biomes.length; i++) {
-                    biomes[i] = plainsBiome;
-                }
-                biomesField.set(null, biomes);
-                WorldCreator worldCreator = new WorldCreator(worldName);
-                worldCreator.environment(World.Environment.NORMAL);
-                worldCreator.type(WorldType.LARGE_BIOMES);
-                Bukkit.createWorld(worldCreator);*/
+                //Field plainsField = clazz.getDeclaredField(biome);
+                //plainsField.setAccessible(true);
+                //Object plainsBiome = plainsField.get(null);
+                //Field biomesField = clazz.getDeclaredField("biomes");
+                //biomesField.setAccessible(true);
+                //Object[] biomes = (Object[]) biomesField.get(null);
+                //for(int i = 0; i < biomes.length; i++) {
+                    //biomes[i] = plainsBiome;
+                //}
+                //biomesField.set(null, biomes);
+                //WorldCreator worldCreator = new WorldCreator(worldName);
+                //worldCreator.environment(World.Environment.NORMAL);
+                //worldCreator.type(WorldType.LARGE_BIOMES);
+                //Bukkit.createWorld(worldCreator);
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
@@ -237,7 +207,7 @@ public class NikAPI extends JavaPlugin {
         }
 
         return false;
-    }
+    }*/
 
     public static NikAPI getInstance() {
         return instance;
