@@ -42,24 +42,10 @@ public enum MinecraftVersion {
             input = input.replaceAll("\\{nms}", "net.minecraft.server." + name());
 
         return input.replaceAll("\\{obc}", "org.bukkit.craftbukkit." + name());
-    }
+    }*/
 
-    public boolean atLeast(MinecraftVersion minecraftVersion)
+    /*public boolean atLeast(MinecraftVersion minecraftVersion)
     {
         return ordinal() >= minecraftVersion.ordinal();
-    }
-
-    public static MinecraftVersion getVersion()
-    {
-        try
-        {
-            String packageName = ReflectionProvider.reflect(Class.forName("org.bukkit.Bukkit")).invokeMethod("getServer").getReflectedClass().getPackage().getName();
-            return MinecraftVersion.valueOf(packageName.substring(packageName.lastIndexOf('.') + 1));
-        }
-        catch(ClassNotFoundException e)
-        {
-            e.printStackTrace();
-            return null;
-        }
     }*/
 }
