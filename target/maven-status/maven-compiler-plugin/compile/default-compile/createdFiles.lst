@@ -14,4 +14,5 @@ de\niklas\nikapi\spigot\item\custom\mob\LootItem.class
 de\niklas\nikapi\spigot\listeners\PlayerQuitListener.class
 de\niklas\nikapi\spigot\item\ItemBuilder.class
 de\niklas\nikapi\spigot\inventory\InventoryMenu.class
+de\niklas\nikapi\HologramBuilder.class
 de\niklas\nikapi\spigot\inventory\PaginatedInventoryMenu.class

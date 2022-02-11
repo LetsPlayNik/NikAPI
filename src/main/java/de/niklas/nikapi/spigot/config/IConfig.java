@@ -8,9 +8,9 @@ package de.niklas.nikapi.spigot.config;
 
 public interface IConfig {
 
-    void set(String key, Object value);
+    /*void set(String key, Object value);
     void get(String key);
     void setNested(String path, Object value);
     void getNested(String path);
-    void save();
+    void save();*/
 }

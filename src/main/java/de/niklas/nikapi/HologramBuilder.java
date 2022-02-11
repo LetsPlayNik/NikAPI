@@ -19,12 +19,10 @@ public class HologramBuilder {
     private final Location location;
     private final String text;
 
-    //private final Object armorStand;
 
     public HologramBuilder(Location location, String text) {
         this.location = location;
         this.text = text;
-        //this.armorStand = EntityArmor
     }
 
     public void spawn() {

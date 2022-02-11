@@ -10,19 +10,19 @@ import de.niklas.nikapi.spigot.NikAPI;
 
 import java.io.File;
 
-public class JsonConfig implements IConfig {
+public class JsonConfig/* implements IConfig*/ {
 
-    private final String filename;
+    /*private final String filename;
 
     public JsonConfig(String filename) {
         this.filename = filename;
-    }
+    }*/
     /*public Config(String filename, String subFolder) {
         this.filename = filename;
         this.subFolder = subFolder;
     }*/
 
-    @Override
+    /*@Override
     public void set(String key, Object value) {
     }
     @Override
@@ -36,5 +36,5 @@ public class JsonConfig implements IConfig {
     }
     @Override
     public void save() {
-    }
+    }*/
 }
