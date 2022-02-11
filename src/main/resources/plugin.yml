@@ -27,3 +27,6 @@ commands:
   customworld:
     description: "creates a custom world"
     usage: "/customworld"
+  storagetest:
+    description: "Storage Test"
+    usage: "/storagetest"

@@ -1,5 +1,7 @@
 package de.niklas.nikapi.spigot;
 
+import de.niklas.nikapi.spigot.config.Storage;
+import de.niklas.nikapi.spigot.config.Test;
 import de.niklas.nikapi.spigot.config.YAMLConfig;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
 import de.niklas.nikapi.spigot.inventory.InventoryMenu;
@@ -225,6 +227,13 @@ public class NikAPI extends JavaPlugin {
                 exception.printStackTrace();
             }
             return  true;
+        }
+        if(command.getName().equalsIgnoreCase("storagetest")) {
+            Location location = ((Player) sender).getLocation();
+            Storage<Location> storage = new Storage<>(Location.class);
+            storage.setData("data", location);
+            storage.output();
+            return true;
         }
 
         return false;
