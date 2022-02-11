@@ -32,7 +32,7 @@ public enum MinecraftVersion {
         try {
             return MinecraftVersion.valueOf(Bukkit.getServer().getClass().getPackage().getName().split("\\.")[3]);
         } catch(IllegalArgumentException exception) {
-            return null;
+            return null; //test
         }
     }
     /*public String replace(String input) {
