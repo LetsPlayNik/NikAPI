@@ -16,11 +16,6 @@ public class NikAPI {
         initListeners(plugin);
     }
     public void initListeners(Plugin plugin) {
-        //getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
-        //getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
-        //getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
-        //getServer().getPluginManager().registerEvents(new EntityDeathListener(), plugin);
-
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
