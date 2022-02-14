@@ -52,6 +52,10 @@ public class ItemBuilder {
         itemMeta.addItemFlags(flags);
         return this;
     }
+    public ItemBuilder hideAllItemFlags() {
+        addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_DESTROYS, ItemFlag.HIDE_ENCHANTS, ItemFlag.HIDE_PLACED_ON, ItemFlag.HIDE_POTION_EFFECTS, ItemFlag.HIDE_UNBREAKABLE);
+        return this;
+    }
     public ItemBuilder setDurability(short durability) {
         itemStack.setDurability(durability);
         return this;
