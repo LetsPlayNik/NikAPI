@@ -7,9 +7,15 @@ package de.niklas.nikapi.spigot;
  */
 
 import de.niklas.nikapi.spigot.nms.MinecraftVersion;
+import io.netty.channel.*;
+import io.netty.handler.codec.MessageToMessageDecoder;
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Method;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class NikPlayer {
 
@@ -19,6 +25,55 @@ public class NikPlayer {
         this.player = player;
     }
 
+    public void inject(Consumer<Object> incomingPacket, Consumer<Object> outgoingPacket) {
+        ChannelDuplexHandler channelDuplexHandler = new ChannelDuplexHandler() {
+            @Override
+            public void channelRead(ChannelHandlerContext ctx, Object object) throws Exception {
+                incomingPacket.accept(object);
+                super.channelRead(ctx, object);
+            }
+            @Override
+            public void write(ChannelHandlerContext ctx, Object object, ChannelPromise promise) throws Exception {
+                outgoingPacket.accept(object);
+                super.write(ctx, object, promise);
+            }
+        };
+        try {
+            Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
+            Object channel = networkManager.getClass().getField("channel").get(networkManager);
+            Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
+            pipelineMethod.setAccessible(true);
+            Object pipeline = pipelineMethod.invoke(channel);
+            ChannelPipeline channelPipeline = (ChannelPipeline) pipeline;
+            channelPipeline.addBefore("packet_handler", player.getName(), channelDuplexHandler);
+            channelPipeline.addAfter("decoder", "PacketInjector", new MessageToMessageDecoder<Object>() {
+                @Override
+                protected void decode(ChannelHandlerContext channelHandlerContext, Object object, List<Object> list) throws Exception {
+                    list.add(object);
+                    incomingPacket.accept(object);
+                }
+            });
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+    /*public void uninject() {
+        try {
+            Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
+            Object channelField = networkManager.getClass().getField("channel").get(networkManager);
+            Channel channel = (Channel) channelField;
+            channel.eventLoop().submit(() -> {
+                channel.pipeline().remove(player.getName());
+                return null;
+            });
+        } catch(Exception exception) {
+            exception.printStackTrace();
+        }
+    }*/
     public void sendPacket(Object packet) {
         try {
             Object handle = player.getClass().getMethod("getHandle").invoke(player);

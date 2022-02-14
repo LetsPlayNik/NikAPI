@@ -7,4 +7,14 @@ package de.niklas.nikapi.spigot.packet;
  */
 
 public class PacketManager {
+
+    private static PacketManager instance;
+
+    public PacketManager() {
+        instance = this;
+    }
+
+    public static PacketManager getInstance() {
+        return instance;
+    }
 }
