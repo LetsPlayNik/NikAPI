@@ -23,7 +23,7 @@ public class NikPlayer {
         this.player = player;
     }
 
-    public void inject(Consumer<Object> incomingPacket, Consumer<Object> outgoingPacket) {
+    public void injectPacketListener(Consumer<Object> incomingPacket, Consumer<Object> outgoingPacket) {
         ChannelDuplexHandler channelDuplexHandler = new ChannelDuplexHandler() {
             @Override
             public void channelRead(ChannelHandlerContext ctx, Object object) throws Exception {
@@ -37,8 +37,9 @@ public class NikPlayer {
             }
         };
         try {
-            Object handle = player.getClass().getMethod("getHandle").invoke(player);
-            Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            //Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            Object playerConnection = getPlayerConnection();
             Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
             Object channel = networkManager.getClass().getField("channel").get(networkManager);
             Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
@@ -74,8 +75,9 @@ public class NikPlayer {
     }*/
     public void sendPacket(Object packet) {
         try {
-            Object handle = player.getClass().getMethod("getHandle").invoke(player);
-            Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            //Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
+            Object playerConnection = getPlayerConnection();
             Method sendPacket = playerConnection.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + MinecraftVersion.getVersion() + ".Packet"));
             sendPacket.invoke(playerConnection, packet);
         } catch(Exception exception) {
