@@ -22,7 +22,7 @@ public class YAMLConfig {
         configFile = new File(filename);
         if(!configFile.exists()) {
             //Test
-            configFile.mkdirs();
+            //configFile.mkdirs();
             //Test END
             configFile.createNewFile();
         }

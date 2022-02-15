@@ -37,3 +37,4 @@ public class InventoryManager {
         return instance;
     }
 }
+ 
