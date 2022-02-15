@@ -22,9 +22,10 @@ public class YAMLConfig {
         configFile = new File(filename);
         if(!configFile.exists()) {
             //Test
-            if(filename.contains("/")) {
+            /*if(filename.contains("/")) {
                 new File(filename.split("/")[filename.split("/").length - 1]).mkdirs();
-            }
+            }*/
+            configFile.getParentFile().mkdirs();
             //configFile.mkdirs();
             //Test END
             configFile.createNewFile();
