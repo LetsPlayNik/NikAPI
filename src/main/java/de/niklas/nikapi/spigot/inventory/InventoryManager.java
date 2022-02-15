@@ -22,13 +22,11 @@ public class InventoryManager {
     public InventoryManager() {
         instance = this;
         openedMenus = new HashMap<>();
-        //Test
         if(Bukkit.getServer().getOnlinePlayers().size() > 0) {
             for(Player player : Bukkit.getServer().getOnlinePlayers()) {
                 player.closeInventory();
             }
         }
-        //Test END
     }
 
     public Map<UUID, InventoryMenu> getOpenedMenus() {
