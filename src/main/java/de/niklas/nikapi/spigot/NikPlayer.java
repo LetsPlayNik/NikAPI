@@ -9,8 +9,6 @@ package de.niklas.nikapi.spigot;
 import de.niklas.nikapi.spigot.nms.MinecraftVersion;
 import io.netty.channel.*;
 import io.netty.handler.codec.MessageToMessageDecoder;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Method;
@@ -83,5 +81,20 @@ public class NikPlayer {
         } catch(Exception exception) {
             exception.printStackTrace();
         }
+    }
+
+    public Object getPlayerConnection() {
+        try {
+            Object handle = player.getClass().getMethod("getHandle").invoke(player);
+            return handle.getClass().getField("playerConnection").get(handle);
+        } catch(Exception exception) {
+            if(exception instanceof NoSuchFieldException) {
+                try {
+                    Object handle = player.getClass().getMethod("getHandle").invoke(player);
+                    return handle.getClass().getField("b").get(handle);
+                } catch(Exception ignored) {}
+            }
+        }
+        return null;
     }
 }
