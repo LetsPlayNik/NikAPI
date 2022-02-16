@@ -37,8 +37,6 @@ public class NikPlayer {
             }
         };
         try {
-            //Object handle = player.getClass().getMethod("getHandle").invoke(player);
-            //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
             Object playerConnection = getPlayerConnection();
             Object networkManager;
             Object channelField;
@@ -49,16 +47,11 @@ public class NikPlayer {
                 networkManager = playerConnection.getClass().getField("a").get(playerConnection);
                 channelField = networkManager.getClass().getField("k").get(networkManager);
             }
-            //Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
-            //Object channel = networkManager.getClass().getField("channel").get(networkManager);
             Channel channel = (Channel) channelField;
-            ChannelPipeline pipeline = channel.pipeline();
-            /*Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
-            pipelineMethod.setAccessible(true);
-            Object pipeline = pipelineMethod.invoke(channel);*/
-            ChannelPipeline channelPipeline = (ChannelPipeline) pipeline;
-            channelPipeline.addBefore("packet_handler", player.getName(), channelDuplexHandler);
-            channelPipeline.addAfter("decoder", "PacketInjector", new MessageToMessageDecoder<Object>() {
+            //ChannelPipeline pipeline = channel.pipeline();
+            //ChannelPipeline channelPipeline = (ChannelPipeline) pipeline;
+            channel.pipeline().addBefore("packet_handler", player.getName(), channelDuplexHandler);
+            channel.pipeline().addAfter("decoder", "PacketInjector", new MessageToMessageDecoder<Object>() {
                 @Override
                 protected void decode(ChannelHandlerContext channelHandlerContext, Object object, List<Object> list) throws Exception {
                     list.add(object);
@@ -69,6 +62,9 @@ public class NikPlayer {
             exception.printStackTrace();
         }
     }
+    /*public void uninjectPacketListener() {
+
+    }*/
     /*public void uninject() {
         try {
             Object handle = player.getClass().getMethod("getHandle").invoke(player);
@@ -86,8 +82,6 @@ public class NikPlayer {
     }*/
     public void sendPacket(Object packet) {
         try {
-            //Object handle = player.getClass().getMethod("getHandle").invoke(player);
-            //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
             Object playerConnection = getPlayerConnection();
             Method sendPacket = playerConnection.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + MinecraftVersion.getVersion() + ".Packet"));
             sendPacket.invoke(playerConnection, packet);
