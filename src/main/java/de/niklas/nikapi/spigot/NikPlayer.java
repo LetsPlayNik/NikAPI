@@ -86,7 +86,15 @@ public class NikPlayer {
             Method sendPacket = playerConnection.getClass().getMethod("sendPacket", Class.forName("net.minecraft.server." + MinecraftVersion.getVersion() + ".Packet"));
             sendPacket.invoke(playerConnection, packet);
         } catch(Exception exception) {
-            exception.printStackTrace();
+            if(exception instanceof NoSuchFieldException) {
+                try {
+                    Object playerConnection = getPlayerConnection();
+                    Method sendPacket = playerConnection.getClass().getMethod("sendPacket", Class.forName("net.minecraft.network.protocol.Packet"));
+                    sendPacket.invoke(playerConnection, packet);
+                } catch(Exception ignored) {}
+            } else {
+                exception.printStackTrace();
+            }
         }
     }
 
