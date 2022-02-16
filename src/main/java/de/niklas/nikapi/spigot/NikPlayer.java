@@ -41,19 +41,21 @@ public class NikPlayer {
             //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
             Object playerConnection = getPlayerConnection();
             Object networkManager;
-            Object channel;
+            Object channelField;
             try {
                 networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
-                channel = networkManager.getClass().getField("channel").get(networkManager);
+                channelField = networkManager.getClass().getField("channel").get(networkManager);
             } catch(NoSuchFieldException exception) {
                 networkManager = playerConnection.getClass().getField("a").get(playerConnection);
-                channel = networkManager.getClass().getField("k").get(networkManager);
+                channelField = networkManager.getClass().getField("k").get(networkManager);
             }
             //Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
             //Object channel = networkManager.getClass().getField("channel").get(networkManager);
-            Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
+            Channel channel = (Channel) channelField;
+            ChannelPipeline pipeline = channel.pipeline();
+            /*Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
             pipelineMethod.setAccessible(true);
-            Object pipeline = pipelineMethod.invoke(channel);
+            Object pipeline = pipelineMethod.invoke(channel);*/
             ChannelPipeline channelPipeline = (ChannelPipeline) pipeline;
             channelPipeline.addBefore("packet_handler", player.getName(), channelDuplexHandler);
             channelPipeline.addAfter("decoder", "PacketInjector", new MessageToMessageDecoder<Object>() {
