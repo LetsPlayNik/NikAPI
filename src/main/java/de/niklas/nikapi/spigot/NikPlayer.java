@@ -40,8 +40,17 @@ public class NikPlayer {
             //Object handle = player.getClass().getMethod("getHandle").invoke(player);
             //Object playerConnection = handle.getClass().getField("playerConnection").get(handle);
             Object playerConnection = getPlayerConnection();
-            Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
-            Object channel = networkManager.getClass().getField("channel").get(networkManager);
+            Object networkManager;
+            Object channel;
+            try {
+                networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
+                channel = networkManager.getClass().getField("channel").get(networkManager);
+            } catch(NoSuchFieldException exception) {
+                networkManager = playerConnection.getClass().getField("a").get(playerConnection);
+                channel = networkManager.getClass().getField("k").get(networkManager);
+            }
+            //Object networkManager = playerConnection.getClass().getField("networkManager").get(playerConnection);
+            //Object channel = networkManager.getClass().getField("channel").get(networkManager);
             Method pipelineMethod = channel.getClass().getDeclaredMethod("pipeline");
             pipelineMethod.setAccessible(true);
             Object pipeline = pipelineMethod.invoke(channel);

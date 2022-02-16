@@ -32,14 +32,6 @@ public class YAMLConfig {
         }
         config = YamlConfiguration.loadConfiguration(configFile);
     }
-    /*public YAMLConfig(String subFolder, String filename) throws IOException {
-        configFile = new File(subFolder, filename);
-        if(!configFile.exists()) {
-            new File(subFolder).mkdirs();
-            configFile.createNewFile();
-        }
-        config = YamlConfiguration.loadConfiguration(configFile);
-    }*/
 
     public void addEntry(String key, Object value) {
         getConfig().set(key, value);
