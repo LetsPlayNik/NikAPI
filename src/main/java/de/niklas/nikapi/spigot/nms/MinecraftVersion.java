@@ -35,6 +35,12 @@ public enum MinecraftVersion {
             return null;
         }
     }
+    public boolean atLeast(MinecraftVersion minecraftVersion) {
+        return ordinal() >= minecraftVersion.ordinal();
+    }
+    public boolean atMost(MinecraftVersion minecraftVersion) {
+        return ordinal() <= minecraftVersion.ordinal();
+    }
     /*public String replace(String input) {
         if(atLeast(MinecraftVersion.v1_17_R1))
             input = input.replaceAll("\\{nms}", "net.minecraft");
