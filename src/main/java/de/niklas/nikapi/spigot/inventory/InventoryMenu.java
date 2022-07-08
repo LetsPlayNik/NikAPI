@@ -15,14 +15,17 @@ public class InventoryMenu {
     private final Inventory inventory;
     private final Map<Integer, InventoryMenuItem> items;
     private Consumer<InventoryClickEvent> clickListener;
+    private boolean closeable;
 
     public InventoryMenu(int size, String displayName) {
         inventory = Bukkit.createInventory(null, size, displayName);
         items = new HashMap<>();
+        closeable = true;
     }
     public InventoryMenu(int size) {
         inventory = Bukkit.createInventory(null, size);
         items = new HashMap<>();
+        closeable = true;
     }
 
     public void open(Player player) {
@@ -31,6 +34,16 @@ public class InventoryMenu {
         if(!InventoryManager.getInstance().getOpenedMenus().containsKey(player.getUniqueId())) {
             InventoryManager.getInstance().getOpenedMenus().put(player.getUniqueId(), this);
         }
+    }
+    public void close(Player player) {
+        closeable = true;
+        player.closeInventory();
+    }
+    public void setCloseable(boolean closeable) {
+        this.closeable = closeable;
+    }
+    public boolean isCloseable() {
+        return closeable;
     }
     public void setItem(int index, InventoryMenuItem inventoryMenuItem) {
         inventory.setItem(index, inventoryMenuItem.getItemStack());

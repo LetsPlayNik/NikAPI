@@ -16,7 +16,9 @@ public class InventoryCloseListener implements Listener {
     @EventHandler
     public void onClose(InventoryCloseEvent event) {
         if(InventoryManager.getInstance().getOpenedMenus().containsKey(event.getPlayer().getUniqueId())) {
-            InventoryManager.getInstance().getOpenedMenus().remove(event.getPlayer().getUniqueId());
+            if(InventoryManager.getInstance().getOpenedMenus().get(event.getPlayer().getUniqueId()).isCloseable()) {
+                InventoryManager.getInstance().getOpenedMenus().remove(event.getPlayer().getUniqueId());
+            }
         }
     }
 }

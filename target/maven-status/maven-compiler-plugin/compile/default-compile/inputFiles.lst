@@ -1,8 +1,8 @@
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\YAMLConfig.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\mob\MobManager.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\Storage.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryMenu.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\custom\mob\CustomMob.java
+E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\NikPlayer.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\JsonConfig.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\item\ItemBuilder.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\PlayerQuitListener.java
@@ -14,7 +14,6 @@ E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\IConfig.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\InventoryManager.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\HologramBuilder.java
-E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\Test.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\inventory\PaginatedInventoryMenu.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\config\ConfigManager.java
 E:\Niklas\Programmiert\Minecraft Plugins\Minecraft Java Edition\Open Source\API\src\main\java\de\niklas\nikapi\spigot\listeners\InventoryClickListener.java
