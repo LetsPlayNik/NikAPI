@@ -6,7 +6,9 @@ package de.niklas.nikapi.spigot.listeners;
  * Created at 23.12.2021 - 16:21Uhr
  */
 
+import de.niklas.nikapi.spigot.NikAPI;
 import de.niklas.nikapi.spigot.inventory.InventoryManager;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
@@ -18,6 +20,13 @@ public class InventoryCloseListener implements Listener {
         if(InventoryManager.getInstance().getOpenedMenus().containsKey(event.getPlayer().getUniqueId())) {
             if(InventoryManager.getInstance().getOpenedMenus().get(event.getPlayer().getUniqueId()).isCloseable()) {
                 InventoryManager.getInstance().getOpenedMenus().remove(event.getPlayer().getUniqueId());
+            } else {
+                Bukkit.getScheduler().scheduleSyncDelayedTask(NikAPI.getInstance().getPlugin(), new Runnable() {
+                    @Override
+                    public void run() {
+                        event.getPlayer().openInventory(event.getInventory());
+                    }
+                }, 1L);
             }
         }
     }

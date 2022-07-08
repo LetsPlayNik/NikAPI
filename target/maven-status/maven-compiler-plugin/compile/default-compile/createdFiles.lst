@@ -14,6 +14,7 @@ de\niklas\nikapi\spigot\inventory\InventoryManager.class
 de\niklas\nikapi\spigot\item\custom\mob\MobManager.class
 de\niklas\nikapi\spigot\nms\MinecraftVersion.class
 de\niklas\nikapi\spigot\config\YAMLConfig.class
+de\niklas\nikapi\spigot\listeners\InventoryCloseListener$1.class
 de\niklas\nikapi\spigot\listeners\PlayerQuitListener.class
 de\niklas\nikapi\spigot\inventory\InventoryMenu.class
 de\niklas\nikapi\spigot\NikPlayer$2.class

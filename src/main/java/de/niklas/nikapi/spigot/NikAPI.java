@@ -9,13 +9,16 @@ public class NikAPI {
 
     private static NikAPI instance;
 
+    private Plugin plugin;
+
     public void init(Plugin plugin) {
         instance = this;
+        this.plugin = plugin;
         new InventoryManager();
         new MobManager();
-        initListeners(plugin);
+        initListeners();
     }
-    public void initListeners(Plugin plugin) {
+    private void initListeners() {
         plugin.getServer().getPluginManager().registerEvents(new PlayerQuitListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new InventoryClickListener(), plugin);
         plugin.getServer().getPluginManager().registerEvents(new InventoryCloseListener(), plugin);
@@ -204,6 +207,9 @@ public class NikAPI {
         return false;
     }*/
 
+    public Plugin getPlugin() {
+        return plugin;
+    }
     public static NikAPI getInstance() {
         return instance;
     }
